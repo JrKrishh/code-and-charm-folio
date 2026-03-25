@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowDown } from "lucide-react";
+import heroNeural from "@/assets/hero-neural.png";
 
 const HeroSection = () => {
   const [visible, setVisible] = useState(false);
@@ -14,8 +15,19 @@ const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden"
     >
+      {/* Hero neural brain illustration */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img
+          src={heroNeural}
+          alt=""
+          width={1024}
+          height={1024}
+          className="w-[500px] md:w-[650px] opacity-20 animate-pulse-glow"
+        />
+      </div>
+
       <div
-        className={`text-center transition-all duration-1000 ${
+        className={`relative text-center transition-all duration-1000 ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
