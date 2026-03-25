@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import avatarImg from "@/assets/avatar.png";
 
 const skills = [
   { name: "React", level: 90 },
@@ -21,9 +22,7 @@ const SkillNode = ({ name, level, index }: { name: string; level: number; index:
         className="relative rounded-full border border-primary/30 flex items-center justify-center animate-pulse-glow"
         style={{ width: size, height: size }}
       >
-        <div
-          className="absolute inset-1 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20"
-        />
+        <div className="absolute inset-1 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20" />
         <span className="relative text-xs font-semibold text-primary">{level}%</span>
       </div>
       <span className="text-xs text-muted-foreground tracking-wide">{name}</span>
@@ -69,8 +68,25 @@ const AboutSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Bio */}
+          {/* Bio with avatar */}
           <div className="space-y-6">
+            <div className="flex items-center gap-6 mb-8">
+              <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-primary/30 animate-glow-pulse shrink-0">
+                <img
+                  src={avatarImg}
+                  alt="Boopathi Raja"
+                  loading="lazy"
+                  width={512}
+                  height={512}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-foreground">Boopathi Raja</h3>
+                <p className="text-sm text-primary tracking-wide">Vibe Coder • AI Enthusiast</p>
+              </div>
+            </div>
+
             <p className="text-muted-foreground leading-relaxed">
               I'm <span className="text-primary font-semibold">Boopathi Raja</span>, a Vibe Coder
               who thrives at the intersection of creativity and technology. I build digital
