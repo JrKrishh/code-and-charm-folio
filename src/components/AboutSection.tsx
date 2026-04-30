@@ -99,10 +99,37 @@ const AboutSection = () => {
                 <p className="text-2xl font-bold text-secondary">20+</p>
                 <p className="text-xs text-muted-foreground">Projects</p>
               </div>
-              <div className="px-4 py-2 rounded-lg border border-border/50 bg-muted/30">
-                <p className="text-2xl font-bold text-primary">10+</p>
-                <p className="text-xs text-muted-foreground">AI Tools</p>
+          {/* Avatar showcase */}
+          <div className="order-1 lg:order-2 relative flex flex-col items-center">
+            <div className="relative group">
+              {/* Outer glow rings */}
+              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/30 via-secondary/20 to-primary/30 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary via-secondary to-primary opacity-50 blur-sm" />
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border border-primary/40">
+                <img
+                  src={avatarImg}
+                  alt="Boopathi Raja"
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Corner accents */}
+                <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-primary" />
+                <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-primary" />
+                <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-primary" />
+                <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-primary" />
               </div>
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-background border border-primary/40 text-xs tracking-[0.2em] uppercase text-primary">
+                Online
+              </div>
+            </div>
+
+            {/* Skills */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-12 w-full justify-items-center">
+              {skills.map((skill, i) => (
+                <SkillNode key={skill.name} {...skill} index={i} />
+              ))}
             </div>
           </div>
 
