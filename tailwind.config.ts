@@ -57,9 +57,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        neural: {
-          glow: "hsl(var(--neural-glow))",
-          synapse: "hsl(var(--synapse))",
+        cartoon: {
+          pink: "hsl(var(--cartoon-pink))",
+          blue: "hsl(var(--cartoon-blue))",
+          yellow: "hsl(var(--cartoon-yellow))",
+          mint: "hsl(var(--cartoon-mint))",
+          purple: "hsl(var(--cartoon-purple))",
+          peach: "hsl(var(--cartoon-peach))",
         },
       },
       borderRadius: {

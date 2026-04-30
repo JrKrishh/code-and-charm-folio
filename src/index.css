@@ -1,72 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Patrick+Hand&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 240 20% 4%;
-    --foreground: 210 40% 92%;
+    --background: 50 100% 94%;
+    --foreground: 240 10% 10%;
 
-    --card: 240 18% 7%;
-    --card-foreground: 210 40% 92%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
 
-    --popover: 240 18% 7%;
-    --popover-foreground: 210 40% 92%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
 
-    --primary: 190 100% 50%;
-    --primary-foreground: 240 20% 4%;
+    --primary: 350 95% 65%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 263 76% 66%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 200 95% 65%;
+    --secondary-foreground: 240 10% 10%;
 
-    --muted: 240 15% 12%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 50 60% 90%;
+    --muted-foreground: 240 8% 35%;
 
-    --accent: 263 76% 66%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 50 100% 60%;
+    --accent-foreground: 240 10% 10%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 15% 15%;
-    --input: 240 15% 15%;
-    --ring: 190 100% 50%;
+    --border: 240 10% 10%;
+    --input: 240 10% 10%;
+    --ring: 350 95% 65%;
 
-    --radius: 0.75rem;
+    --radius: 1.25rem;
 
-    --sidebar-background: 240 18% 6%;
-    --sidebar-foreground: 210 40% 92%;
-    --sidebar-primary: 190 100% 50%;
-    --sidebar-primary-foreground: 240 20% 4%;
-    --sidebar-accent: 240 15% 12%;
-    --sidebar-accent-foreground: 210 40% 92%;
-    --sidebar-border: 240 15% 15%;
-    --sidebar-ring: 190 100% 50%;
+    /* Cartoon palette */
+    --cartoon-pink: 350 95% 65%;
+    --cartoon-blue: 200 95% 65%;
+    --cartoon-yellow: 48 100% 60%;
+    --cartoon-mint: 155 70% 65%;
+    --cartoon-purple: 270 80% 70%;
+    --cartoon-peach: 20 100% 75%;
 
-    --neural-glow: 190 100% 50%;
-    --synapse: 263 76% 66%;
-  }
-
-  .dark {
-    --background: 240 20% 4%;
-    --foreground: 210 40% 92%;
-    --card: 240 18% 7%;
-    --card-foreground: 210 40% 92%;
-    --popover: 240 18% 7%;
-    --popover-foreground: 210 40% 92%;
-    --primary: 190 100% 50%;
-    --primary-foreground: 240 20% 4%;
-    --secondary: 263 76% 66%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 240 15% 12%;
-    --muted-foreground: 215 20% 55%;
-    --accent: 263 76% 66%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 240 15% 15%;
-    --input: 240 15% 15%;
-    --ring: 190 100% 50%;
+    --sidebar-background: 50 100% 94%;
+    --sidebar-foreground: 240 10% 10%;
+    --sidebar-primary: 350 95% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 50 60% 90%;
+    --sidebar-accent-foreground: 240 10% 10%;
+    --sidebar-border: 240 10% 10%;
+    --sidebar-ring: 350 95% 65%;
   }
 }
 
@@ -77,23 +62,60 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 500;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
-  .text-glow {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.3);
+  /* Chunky offset shadow — the signature of this style */
+  .shadow-chunky {
+    box-shadow: 6px 6px 0 0 hsl(var(--foreground));
+  }
+  .shadow-chunky-lg {
+    box-shadow: 10px 10px 0 0 hsl(var(--foreground));
+  }
+  .shadow-chunky-sm {
+    box-shadow: 4px 4px 0 0 hsl(var(--foreground));
+  }
+  .shadow-chunky-color {
+    box-shadow: 8px 8px 0 0 hsl(var(--primary));
   }
 
-  .text-glow-violet {
-    text-shadow: 0 0 20px hsl(var(--secondary) / 0.6), 0 0 40px hsl(var(--secondary) / 0.3);
+  /* Bold black border */
+  .border-cartoon {
+    @apply border-[3px] border-foreground;
+  }
+  .border-cartoon-thick {
+    @apply border-[4px] border-foreground;
   }
 
-  .box-glow {
-    box-shadow: 0 0 15px hsl(var(--primary) / 0.3), 0 0 30px hsl(var(--primary) / 0.1);
+  /* Press-down hover effect */
+  .hover-press {
+    @apply transition-all duration-150;
+  }
+  .hover-press:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0 0 hsl(var(--foreground));
+  }
+  .hover-press:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0 0 0 0 hsl(var(--foreground));
   }
 
-  .box-glow-violet {
-    box-shadow: 0 0 15px hsl(var(--secondary) / 0.3), 0 0 30px hsl(var(--secondary) / 0.1);
+  .font-display {
+    font-family: 'Fredoka', system-ui, sans-serif;
+  }
+  .font-hand {
+    font-family: 'Patrick Hand', cursive;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 2px hsl(var(--foreground));
   }
 }
