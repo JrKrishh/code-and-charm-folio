@@ -1,140 +1,115 @@
-import { useEffect, useRef } from "react";
 import avatarImg from "@/assets/avatar.png";
+import { Code2, Sparkles, Heart, Coffee, Rocket, Palette } from "lucide-react";
 
 const skills = [
-  { name: "React", level: 90 },
-  { name: "TypeScript", level: 85 },
-  { name: "AI/ML", level: 80 },
-  { name: "Node.js", level: 85 },
-  { name: "Python", level: 75 },
-  { name: "UI/UX", level: 80 },
+  { name: "React", icon: Code2, color: "bg-cartoon-blue" },
+  { name: "TypeScript", icon: Sparkles, color: "bg-cartoon-mint" },
+  { name: "AI / ML", icon: Rocket, color: "bg-cartoon-pink" },
+  { name: "Node.js", icon: Coffee, color: "bg-cartoon-yellow" },
+  { name: "UI / UX", icon: Palette, color: "bg-cartoon-purple" },
+  { name: "Vibes", icon: Heart, color: "bg-cartoon-peach" },
 ];
 
-const SkillNode = ({ name, level, index }: { name: string; level: number; index: number }) => {
-  const size = 60 + (level / 100) * 30;
-
-  return (
-    <div
-      className="flex flex-col items-center gap-2 animate-float"
-      style={{ animationDelay: `${index * 0.5}s` }}
-    >
-      <div
-        className="relative rounded-full border border-primary/30 flex items-center justify-center animate-pulse-glow"
-        style={{ width: size, height: size }}
-      >
-        <div className="absolute inset-1 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20" />
-        <span className="relative text-xs font-semibold text-primary">{level}%</span>
-      </div>
-      <span className="text-xs text-muted-foreground tracking-wide">{name}</span>
-    </div>
-  );
-};
+const stats = [
+  { value: "3+", label: "Years", color: "bg-cartoon-pink" },
+  { value: "20+", label: "Projects", color: "bg-cartoon-blue" },
+  { value: "10+", label: "AI Tools", color: "bg-cartoon-mint" },
+];
 
 const AboutSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-8");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    const el = sectionRef.current;
-    if (el) observer.observe(el);
-    return () => { if (el) observer.unobserve(el); };
-  }, []);
-
   return (
-    <section id="about" className="relative py-32 px-6">
-      <div
-        ref={sectionRef}
-        className="max-w-6xl mx-auto opacity-0 translate-y-8 transition-all duration-1000"
-      >
+    <section id="about" className="relative py-24 px-6">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-sm tracking-[0.3em] uppercase text-primary mb-3">
-            Who I Am
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            About Me
+          <div className="inline-block bg-cartoon-mint border-cartoon-thick shadow-chunky-sm rounded-full px-5 py-1.5 mb-4 font-bold text-sm">
+            🙋 About Me
+          </div>
+          <h2 className="text-5xl sm:text-6xl font-bold">
+            A Lil Bit <span className="bg-cartoon-blue px-3 rounded-2xl border-cartoon-thick shadow-chunky inline-block rotate-1">About Me</span>
           </h2>
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Bio side */}
-          <div className="space-y-6 order-2 lg:order-1">
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-1">Boopathi Raja</h3>
-              <p className="text-sm text-primary tracking-[0.2em] uppercase">Vibe Coder • AI Enthusiast</p>
-            </div>
-
-            <p className="text-muted-foreground leading-relaxed">
-              I'm <span className="text-primary font-semibold">Boopathi Raja</span>, a Vibe Coder
-              who thrives at the intersection of creativity and technology. I build digital
-              experiences that feel alive — where every interaction pulses with intention.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              My approach combines AI-powered tools with human intuition to create products
-              that are not just functional, but feel like extensions of thought. I believe
-              code should flow like neural pathways — elegant, connected, and purposeful.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              When I'm not coding, I'm exploring the latest in AI, experimenting with
-              creative tools, and pushing the boundaries of what's possible in web development.
-            </p>
-
-            <div className="flex gap-4 pt-4">
-              <div className="px-4 py-2 rounded-lg border border-border/50 bg-muted/30">
-                <p className="text-2xl font-bold text-primary">3+</p>
-                <p className="text-xs text-muted-foreground">Years Exp</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Avatar card */}
+          <div className="flex justify-center">
+            <div className="relative">
+              <div className="absolute -top-4 -right-4 px-3 py-1 rounded-2xl bg-cartoon-yellow border-cartoon-thick shadow-chunky-sm font-hand text-lg -rotate-6 z-10">
+                hello!
               </div>
-              <div className="px-4 py-2 rounded-lg border border-border/50 bg-muted/30">
-                <p className="text-2xl font-bold text-secondary">20+</p>
-                <p className="text-xs text-muted-foreground">Projects</p>
-              </div>
-              <div className="px-4 py-2 rounded-lg border border-border/50 bg-muted/30">
-                <p className="text-2xl font-bold text-primary">10+</p>
-                <p className="text-xs text-muted-foreground">AI Tools</p>
+              <div className="w-80 bg-card border-cartoon-thick rounded-3xl shadow-chunky-lg overflow-hidden">
+                <div className="h-72 bg-cartoon-pink flex items-center justify-center border-b-[4px] border-foreground">
+                  <img
+                    src={avatarImg}
+                    alt="Boopathi Raja"
+                    loading="lazy"
+                    width={1024}
+                    height={1024}
+                    className="w-64 h-64 object-contain"
+                  />
+                </div>
+                <div className="p-5 text-center">
+                  <h3 className="text-2xl font-bold">Boopathi Raja</h3>
+                  <p className="font-hand text-xl text-muted-foreground">Vibe Coder ✨</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Avatar showcase */}
-          <div className="order-1 lg:order-2 relative flex flex-col items-center">
-            <div className="relative group">
-              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/30 via-secondary/20 to-primary/30 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary via-secondary to-primary opacity-50 blur-sm" />
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border border-primary/40">
-                <img
-                  src={avatarImg}
-                  alt="Boopathi Raja"
-                  loading="lazy"
-                  width={1024}
-                  height={1024}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-primary" />
-                <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-primary" />
-                <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-primary" />
-                <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-primary" />
-              </div>
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-background border border-primary/40 text-xs tracking-[0.2em] uppercase text-primary">
-                Online
-              </div>
+          {/* Bio */}
+          <div className="space-y-5">
+            <div className="bg-card border-cartoon-thick rounded-3xl shadow-chunky p-6">
+              <p className="text-lg leading-relaxed">
+                I'm a developer who believes code should be{" "}
+                <span className="bg-cartoon-yellow px-2 rounded-lg font-bold">fun</span>,
+                interfaces should{" "}
+                <span className="bg-cartoon-pink text-primary-foreground px-2 rounded-lg font-bold">spark joy</span>,
+                and every product should feel a little bit alive.
+              </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-12 w-full justify-items-center">
-              {skills.map((skill, i) => (
-                <SkillNode key={skill.name} {...skill} index={i} />
+            <div className="bg-card border-cartoon-thick rounded-3xl shadow-chunky p-6">
+              <p className="leading-relaxed text-muted-foreground">
+                I mix AI tools with human intuition to ship things people actually
+                love using. When I'm not coding, you'll find me sketching ideas,
+                drinking too much chai, or experimenting with the latest models.
+              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-3">
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  className={`${s.color} border-cartoon-thick rounded-2xl shadow-chunky-sm p-4 text-center`}
+                >
+                  <p className="text-3xl font-bold">{s.value}</p>
+                  <p className="text-sm font-semibold">{s.label}</p>
+                </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Skills */}
+        <div className="mt-20">
+          <h3 className="text-3xl font-bold text-center mb-8">
+            Things I <span className="font-hand text-cartoon-pink text-4xl">love</span> ❤️
+          </h3>
+          <div className="flex flex-wrap justify-center gap-4">
+            {skills.map((skill, i) => {
+              const Icon = skill.icon;
+              return (
+                <div
+                  key={skill.name}
+                  className={`${skill.color} border-cartoon-thick rounded-2xl shadow-chunky px-5 py-3 flex items-center gap-2 hover-press cursor-default ${
+                    i % 2 === 0 ? "-rotate-2" : "rotate-2"
+                  }`}
+                >
+                  <Icon className="w-5 h-5" />
+                  <span className="font-bold">{skill.name}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
