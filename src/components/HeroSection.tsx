@@ -79,7 +79,7 @@ const HeroSection = () => {
             <div className="absolute -bottom-4 -right-4 px-4 py-2 rounded-2xl bg-cartoon-yellow border-cartoon-thick shadow-chunky-sm font-hand text-xl rotate-6 z-10">
               that's me!
             </div>
-            <div className="w-72 h-72 sm:w-80 sm:h-80 rounded-3xl bg-cartoon-pink border-cartoon-thick shadow-chunky-lg overflow-hidden flex items-center justify-center -rotate-3">
+            <div className="w-72 h-72 sm:w-80 sm:h-80 rounded-3xl bg-cartoon-pink border-cartoon-thick shadow-chunky-lg overflow-hidden flex items-center justify-center -rotate-3 hover-bounce cursor-pointer">
               <img
                 src={avatarImg}
                 alt="Boopathi Raja avatar"
