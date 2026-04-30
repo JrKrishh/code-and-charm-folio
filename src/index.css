@@ -260,4 +260,74 @@
     50% { transform: rotate(15deg) scale(1.05); opacity: 0.6; }
   }
   .animate-pulse-burst { animation: pulse-burst 6s ease-in-out infinite; }
+
+  /* === Animated ink-stamp logo === */
+  .ink-stamp { perspective: 400px; }
+
+  .ink-stamp-face {
+    transform: rotate(-8deg);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.3s ease;
+    animation: stamp-idle 4s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .ink-stamp:hover .ink-stamp-face {
+    animation: stamp-wobble 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+    filter: contrast(1.1) saturate(1.1);
+  }
+
+  @keyframes stamp-idle {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(-6deg); }
+  }
+
+  @keyframes stamp-wobble {
+    0%   { transform: rotate(-8deg) scale(1); }
+    15%  { transform: rotate(-20deg) scale(1.15) translateY(-2px); }
+    30%  { transform: rotate(6deg) scale(0.92) translateY(2px); }
+    45%  { transform: rotate(-4deg) scale(1.08); }
+    60%  { transform: rotate(2deg) scale(0.97); }
+    80%  { transform: rotate(-9deg) scale(1.02); }
+    100% { transform: rotate(-8deg) scale(1); }
+  }
+
+  /* Ink bleed splotches */
+  .ink-bleed {
+    position: absolute;
+    border-radius: 50%;
+    background: hsl(var(--comic-red));
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+    filter: blur(1px);
+    mix-blend-mode: multiply;
+  }
+  .ink-bleed-1 {
+    width: 14px; height: 10px;
+    top: -4px; left: -2px;
+    border-radius: 60% 40% 50% 50%;
+  }
+  .ink-bleed-2 {
+    width: 12px; height: 14px;
+    bottom: -5px; right: 0;
+    border-radius: 40% 60% 55% 45%;
+  }
+  .ink-bleed-3 {
+    width: 8px; height: 8px;
+    top: 50%; right: -4px;
+    border-radius: 55% 45% 60% 40%;
+  }
+
+  .ink-stamp:hover .ink-bleed {
+    animation: ink-splat 0.55s ease-out forwards;
+  }
+  .ink-stamp:hover .ink-bleed-2 { animation-delay: 0.08s; }
+  .ink-stamp:hover .ink-bleed-3 { animation-delay: 0.15s; }
+
+  @keyframes ink-splat {
+    0%   { transform: scale(0); opacity: 0; }
+    40%  { transform: scale(1.3); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 0.55; }
+  }
 }

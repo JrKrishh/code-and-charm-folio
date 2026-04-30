@@ -67,13 +67,22 @@ const Navbar = () => {
             className="flex items-center gap-3 group"
             aria-label="Home"
           >
-            {/* Stamp badge */}
-            <div className="relative w-12 h-12 shrink-0 hidden sm:block">
-              <div className="absolute inset-0 rounded-full bg-comic-red border-[3px] border-foreground rotate-[-8deg] group-hover:rotate-[8deg] transition-transform duration-300"
+            {/* Animated ink-stamp badge */}
+            <div className="ink-stamp relative w-12 h-12 shrink-0 hidden sm:block">
+              {/* Ink bleed splotches — appear on hover */}
+              <span className="ink-bleed ink-bleed-1" aria-hidden="true" />
+              <span className="ink-bleed ink-bleed-2" aria-hidden="true" />
+              <span className="ink-bleed ink-bleed-3" aria-hidden="true" />
+
+              <div className="ink-stamp-face absolute inset-0 rounded-full bg-comic-red border-[3px] border-foreground"
                 style={{ boxShadow: "2px 2px 0 0 hsl(var(--comic-navy))" }}
               >
+                {/* Faux ink texture overlay */}
+                <span className="absolute inset-0 rounded-full opacity-30 mix-blend-multiply pointer-events-none"
+                  style={{ backgroundImage: "radial-gradient(hsl(var(--comic-navy)) 0.8px, transparent 1px)", backgroundSize: "4px 4px" }}
+                />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-comic-cream text-[10px] leading-none text-center">
+                  <span className="font-display text-comic-cream text-[10px] leading-none text-center drop-shadow-[1px_1px_0_hsl(var(--comic-navy))]">
                     BR<br/>★
                   </span>
                 </div>
