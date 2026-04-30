@@ -93,7 +93,7 @@ const ProjectsSection = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-3 py-1 rounded-full bg-cartoon-yellow border-cartoon font-bold"
+                      className="text-xs px-3 py-1 rounded-full bg-cartoon-yellow border-cartoon font-bold hover-wiggle cursor-default"
                     >
                       {tag}
                     </span>
