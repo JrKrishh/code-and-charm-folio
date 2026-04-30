@@ -80,7 +80,7 @@ const AboutSection = () => {
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className={`${s.color} border-cartoon-thick rounded-2xl shadow-chunky-sm p-4 text-center`}
+                  className={`${s.color} border-cartoon-thick rounded-2xl shadow-chunky-sm p-4 text-center hover-bounce cursor-default`}
                 >
                   <p className="text-3xl font-bold">{s.value}</p>
                   <p className="text-sm font-semibold">{s.label}</p>
