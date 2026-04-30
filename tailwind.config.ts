@@ -57,13 +57,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        cartoon: {
-          pink: "hsl(var(--cartoon-pink))",
-          blue: "hsl(var(--cartoon-blue))",
-          yellow: "hsl(var(--cartoon-yellow))",
-          mint: "hsl(var(--cartoon-mint))",
-          purple: "hsl(var(--cartoon-purple))",
-          peach: "hsl(var(--cartoon-peach))",
+        comic: {
+          cream: "hsl(var(--comic-cream))",
+          paper: "hsl(var(--comic-paper))",
+          red: "hsl(var(--comic-red))",
+          "red-dark": "hsl(var(--comic-red-dark))",
+          yellow: "hsl(var(--comic-yellow))",
+          navy: "hsl(var(--comic-navy))",
+          "navy-light": "hsl(var(--comic-navy-light))",
         },
       },
       borderRadius: {

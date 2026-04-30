@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto+Slab:wght@400;500;700;900&family=Patrick+Hand&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,52 +6,57 @@
 
 @layer base {
   :root {
-    --background: 50 100% 94%;
-    --foreground: 240 10% 10%;
+    /* Cream paper background */
+    --background: 48 60% 97%;
+    --foreground: 210 29% 24%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
+    --card-foreground: 210 29% 24%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+    --popover-foreground: 210 29% 24%;
 
-    --primary: 350 95% 65%;
-    --primary-foreground: 0 0% 100%;
+    /* Crimson red */
+    --primary: 6 63% 46%;
+    --primary-foreground: 48 60% 97%;
 
-    --secondary: 200 95% 65%;
-    --secondary-foreground: 240 10% 10%;
+    /* Navy blue */
+    --secondary: 210 29% 24%;
+    --secondary-foreground: 48 60% 97%;
 
-    --muted: 50 60% 90%;
-    --muted-foreground: 240 8% 35%;
+    --muted: 40 40% 92%;
+    --muted-foreground: 210 15% 40%;
 
-    --accent: 50 100% 60%;
-    --accent-foreground: 240 10% 10%;
+    /* Mustard yellow */
+    --accent: 47 86% 70%;
+    --accent-foreground: 210 29% 24%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 6 63% 46%;
+    --destructive-foreground: 48 60% 97%;
 
-    --border: 240 10% 10%;
-    --input: 240 10% 10%;
-    --ring: 350 95% 65%;
+    --border: 210 29% 24%;
+    --input: 210 29% 24%;
+    --ring: 6 63% 46%;
 
-    --radius: 1.25rem;
+    --radius: 0.75rem;
 
-    /* Cartoon palette */
-    --cartoon-pink: 350 95% 65%;
-    --cartoon-blue: 200 95% 65%;
-    --cartoon-yellow: 48 100% 60%;
-    --cartoon-mint: 155 70% 65%;
-    --cartoon-purple: 270 80% 70%;
-    --cartoon-peach: 20 100% 75%;
+    /* Comic palette */
+    --comic-cream: 48 60% 97%;
+    --comic-paper: 40 40% 92%;
+    --comic-red: 6 63% 46%;
+    --comic-red-dark: 6 63% 35%;
+    --comic-yellow: 47 86% 70%;
+    --comic-navy: 210 29% 24%;
+    --comic-navy-light: 210 29% 35%;
 
-    --sidebar-background: 50 100% 94%;
-    --sidebar-foreground: 240 10% 10%;
-    --sidebar-primary: 350 95% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 50 60% 90%;
-    --sidebar-accent-foreground: 240 10% 10%;
-    --sidebar-border: 240 10% 10%;
-    --sidebar-ring: 350 95% 65%;
+    --sidebar-background: 48 60% 97%;
+    --sidebar-foreground: 210 29% 24%;
+    --sidebar-primary: 6 63% 46%;
+    --sidebar-primary-foreground: 48 60% 97%;
+    --sidebar-accent: 40 40% 92%;
+    --sidebar-accent-foreground: 210 29% 24%;
+    --sidebar-border: 210 29% 24%;
+    --sidebar-ring: 6 63% 46%;
   }
 }
 
@@ -59,104 +64,200 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
-    font-family: 'Fredoka', system-ui, sans-serif;
-    font-weight: 500;
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-weight: 400;
   }
-
   h1, h2, h3, h4 {
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-family: 'Bangers', 'Roboto Slab', cursive;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
   }
 }
 
 @layer utilities {
-  /* Chunky offset shadow — the signature of this style */
-  .shadow-chunky {
-    box-shadow: 6px 6px 0 0 hsl(var(--foreground));
+  /* Comic display + body fonts */
+  .font-display { font-family: 'Bangers', cursive; letter-spacing: 0.04em; }
+  .font-body    { font-family: 'Roboto Slab', Georgia, serif; }
+  .font-hand    { font-family: 'Patrick Hand', cursive; }
+
+  /* Halftone dot patterns — the signature texture */
+  .halftone-yellow {
+    background-color: hsl(var(--comic-yellow));
+    background-image: radial-gradient(hsl(var(--comic-navy) / 0.35) 1.2px, transparent 1.4px);
+    background-size: 10px 10px;
   }
-  .shadow-chunky-lg {
-    box-shadow: 10px 10px 0 0 hsl(var(--foreground));
+  .halftone-red {
+    background-color: hsl(var(--comic-red));
+    background-image: radial-gradient(hsl(var(--comic-navy) / 0.4) 1.2px, transparent 1.4px);
+    background-size: 10px 10px;
   }
-  .shadow-chunky-sm {
-    box-shadow: 4px 4px 0 0 hsl(var(--foreground));
+  .halftone-cream {
+    background-color: hsl(var(--comic-cream));
+    background-image: radial-gradient(hsl(var(--comic-navy) / 0.18) 1px, transparent 1.2px);
+    background-size: 12px 12px;
   }
-  .shadow-chunky-color {
-    box-shadow: 8px 8px 0 0 hsl(var(--primary));
+  .halftone-fade-r {
+    background-image: radial-gradient(hsl(var(--comic-navy) / 0.3) 1px, transparent 1.2px),
+                      linear-gradient(to right, hsl(var(--background)) 0%, transparent 100%);
+    background-size: 8px 8px, 100% 100%;
   }
 
-  /* Bold black border */
-  .border-cartoon {
-    @apply border-[3px] border-foreground;
-  }
-  .border-cartoon-thick {
-    @apply border-[4px] border-foreground;
+  /* Action / speed lines burst behind elements */
+  .burst-lines {
+    background-image: repeating-conic-gradient(
+      hsl(var(--comic-navy)) 0deg 2deg,
+      transparent 2deg 14deg
+    );
   }
 
-  /* Press-down hover effect — pushes element into its shadow */
+  /* Comic panel — navy ink border with yellow offset shadow */
+  .comic-panel {
+    @apply border-[3px] border-foreground bg-card rounded-xl;
+    box-shadow: 8px 8px 0 0 hsl(var(--comic-yellow)),
+                8px 8px 0 3px hsl(var(--foreground));
+  }
+  .comic-panel-red {
+    @apply border-[3px] border-foreground bg-card rounded-xl;
+    box-shadow: 8px 8px 0 0 hsl(var(--comic-red)),
+                8px 8px 0 3px hsl(var(--foreground));
+  }
+  .comic-panel-sm {
+    @apply border-[3px] border-foreground bg-card rounded-lg;
+    box-shadow: 5px 5px 0 0 hsl(var(--comic-navy));
+  }
+
+  /* Comic button — chunky with hard offset */
+  .btn-comic-red {
+    @apply inline-flex items-center justify-center gap-2 font-display uppercase tracking-wider
+           text-primary-foreground px-7 py-3 rounded-lg text-lg border-[3px] border-foreground
+           transition-all duration-150;
+    background-color: hsl(var(--comic-red));
+    box-shadow: 0 5px 0 0 hsl(var(--comic-navy));
+  }
+  .btn-comic-red:hover {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 0 hsl(var(--comic-navy));
+  }
+  .btn-comic-red:active {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 0 hsl(var(--comic-navy));
+  }
+
+  .btn-comic-outline {
+    @apply inline-flex items-center justify-center gap-2 font-display uppercase tracking-wider
+           text-foreground bg-card px-7 py-3 rounded-lg text-lg border-[3px] border-foreground
+           transition-all duration-150;
+    box-shadow: 0 5px 0 0 hsl(var(--comic-yellow)), 0 5px 0 3px hsl(var(--comic-navy));
+  }
+  .btn-comic-outline:hover {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 0 hsl(var(--comic-yellow)), 0 3px 0 3px hsl(var(--comic-navy));
+  }
+  .btn-comic-outline:active {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 0 hsl(var(--comic-navy));
+  }
+
+  /* Comic pill button (small) */
+  .btn-comic-pill {
+    @apply inline-flex items-center gap-1.5 font-display uppercase tracking-wide
+           px-4 py-1.5 rounded-full text-sm border-[2.5px] border-foreground
+           transition-all duration-150;
+    box-shadow: 0 3px 0 0 hsl(var(--comic-navy));
+  }
+  .btn-comic-pill:hover {
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 0 hsl(var(--comic-navy));
+  }
+
+  /* Comic title — Bangers with yellow drop-shadow */
+  .title-comic {
+    font-family: 'Bangers', cursive;
+    color: hsl(var(--comic-navy));
+    text-shadow:
+      3px 3px 0 hsl(var(--comic-yellow)),
+      3px 3px 0 hsl(var(--comic-navy) / 0); /* fallback */
+    letter-spacing: 0.03em;
+  }
+  .title-comic-red {
+    font-family: 'Bangers', cursive;
+    color: hsl(var(--comic-red));
+    text-shadow: 3px 3px 0 hsl(var(--comic-navy));
+    letter-spacing: 0.03em;
+  }
+  .title-comic-yellow {
+    font-family: 'Bangers', cursive;
+    color: hsl(var(--comic-yellow));
+    -webkit-text-stroke: 2px hsl(var(--comic-navy));
+    text-shadow: 4px 4px 0 hsl(var(--comic-navy));
+    letter-spacing: 0.03em;
+  }
+
+  /* Speech bubble */
+  .speech-bubble {
+    @apply relative bg-card border-[3px] border-foreground rounded-3xl px-5 py-3 font-hand text-lg;
+    box-shadow: 4px 4px 0 0 hsl(var(--comic-navy));
+  }
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 28px;
+    width: 0; height: 0;
+    border: 14px solid transparent;
+    border-top-color: hsl(var(--comic-navy));
+    border-bottom: 0;
+  }
+  .speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 32px;
+    width: 0; height: 0;
+    border: 10px solid transparent;
+    border-top-color: hsl(var(--card));
+    border-bottom: 0;
+    z-index: 1;
+  }
+
+  /* Sound effect / onomatopoeia tag */
+  .sfx {
+    font-family: 'Bangers', cursive;
+    color: hsl(var(--comic-red));
+    text-shadow: 3px 3px 0 hsl(var(--comic-navy));
+    transform: rotate(-8deg);
+    display: inline-block;
+    letter-spacing: 0.05em;
+  }
+
+  /* Press animation */
   .hover-press {
     @apply transition-all duration-150 ease-out;
   }
-  .hover-press:hover {
-    transform: translate(3px, 3px);
-    box-shadow: 3px 3px 0 0 hsl(var(--foreground));
-  }
-  .hover-press:active {
-    transform: translate(6px, 6px) scale(0.97);
-    box-shadow: 0 0 0 0 hsl(var(--foreground));
-  }
 
-  /* Pop — bounce up with a tiny scale, shadow grows */
+  /* Pop animation */
   .hover-pop {
-    @apply transition-all duration-200 ease-out;
-  }
-  .hover-pop:hover {
-    transform: translate(-2px, -3px) scale(1.04) rotate(-1deg);
-    box-shadow: 8px 9px 0 0 hsl(var(--foreground));
-  }
-  .hover-pop:active {
-    transform: translate(2px, 2px) scale(0.98);
-    box-shadow: 2px 2px 0 0 hsl(var(--foreground));
-  }
-
-  /* Wiggle on hover — playful shake */
-  .hover-wiggle {
-    @apply transition-transform duration-150;
-  }
-  .hover-wiggle:hover {
-    animation: wiggle-hover 0.4s ease-in-out;
-  }
-  @keyframes wiggle-hover {
-    0%, 100% { transform: rotate(0deg); }
-    20% { transform: rotate(-8deg) scale(1.05); }
-    40% { transform: rotate(7deg) scale(1.05); }
-    60% { transform: rotate(-5deg) scale(1.05); }
-    80% { transform: rotate(4deg) scale(1.05); }
-  }
-
-  /* Bounce — squish on hover */
-  .hover-bounce {
     @apply transition-transform duration-200 ease-out;
   }
-  .hover-bounce:hover {
-    animation: bounce-hover 0.5s ease-in-out;
-  }
-  @keyframes bounce-hover {
-    0%, 100% { transform: translateY(0) scale(1); }
-    30% { transform: translateY(-8px) scale(1.05, 0.95); }
-    60% { transform: translateY(0) scale(0.97, 1.03); }
+  .hover-pop:hover {
+    transform: translateY(-2px) rotate(-1deg) scale(1.03);
   }
 
-  .font-display {
-    font-family: 'Fredoka', system-ui, sans-serif;
-  }
-  .font-hand {
-    font-family: 'Patrick Hand', cursive;
+  .hover-wiggle { @apply transition-transform duration-150; }
+  .hover-wiggle:hover { animation: wiggle-hover 0.5s ease-in-out; }
+
+  @keyframes wiggle-hover {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg) scale(1.05); }
+    75% { transform: rotate(5deg) scale(1.05); }
   }
 
-  .text-stroke {
-    -webkit-text-stroke: 2px hsl(var(--foreground));
+  @keyframes pulse-burst {
+    0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.4; }
+    50% { transform: rotate(15deg) scale(1.05); opacity: 0.6; }
   }
+  .animate-pulse-burst { animation: pulse-burst 6s ease-in-out infinite; }
 }

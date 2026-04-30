@@ -16,64 +16,61 @@ const ContactSection = () => {
     <section id="contact" className="relative py-24 px-6">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
-          <div className="inline-block bg-cartoon-pink text-primary-foreground border-cartoon-thick shadow-chunky-sm rounded-full px-5 py-1.5 mb-4 font-bold text-sm">
-            📬 Say Hi
+          <div className="inline-flex items-center gap-2 mb-4 btn-comic-pill halftone-yellow">
+            <span>★ The Final Panel ★</span>
           </div>
-          <h2 className="text-5xl sm:text-6xl font-bold mb-3">
-            Let's <span className="bg-cartoon-yellow px-3 rounded-2xl border-cartoon-thick shadow-chunky inline-block -rotate-2">Chat</span>
+          <h2 className="title-comic-red text-6xl sm:text-7xl md:text-8xl">
+            DROP A LINE!
           </h2>
-          <p className="font-hand text-2xl text-muted-foreground mt-4">
-            drop me a message — I reply fast! 🚀
+          <p className="font-hand text-2xl text-foreground/70 mt-4">
+            send a signal — I reply faster than a speeding bullet 🚀
           </p>
         </div>
 
-        <div className="bg-card border-cartoon-thick rounded-3xl shadow-chunky-lg p-8">
+        <div className="comic-panel p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-bold mb-2">Your Name</label>
+              <label className="block font-display text-base tracking-widest mb-2 text-foreground/80">YOUR NAME</label>
               <input
                 type="text"
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-background border-cartoon font-medium focus:outline-none focus:ring-0 focus:border-primary transition-colors"
+                className="w-full px-4 py-3 rounded-lg bg-background border-[3px] border-foreground font-body focus:outline-none focus:bg-accent/30 transition-colors"
                 placeholder="What should I call you?"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-bold mb-2">Email</label>
+              <label className="block font-display text-base tracking-widest mb-2 text-foreground/80">EMAIL</label>
               <input
                 type="email"
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-background border-cartoon font-medium focus:outline-none focus:border-primary transition-colors"
+                className="w-full px-4 py-3 rounded-lg bg-background border-[3px] border-foreground font-body focus:outline-none focus:bg-accent/30 transition-colors"
                 placeholder="you@cool.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-bold mb-2">Message</label>
+              <label className="block font-display text-base tracking-widest mb-2 text-foreground/80">MESSAGE</label>
               <textarea
                 required
                 rows={5}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-background border-cartoon font-medium focus:outline-none focus:border-primary transition-colors resize-none"
+                className="w-full px-4 py-3 rounded-lg bg-background border-[3px] border-foreground font-body focus:outline-none focus:bg-accent/30 transition-colors resize-none"
                 placeholder="Tell me about your idea, project, or just say hi!"
               />
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-bold border-cartoon-thick shadow-chunky hover-press flex items-center justify-center gap-2"
-            >
+            <button type="submit" className="btn-comic-red w-full">
               {submitted ? (
-                "Message Sent! 🎉"
+                <>SENT! <span className="sfx text-xl ml-1">ZAP!</span></>
               ) : (
                 <>
-                  Send it
+                  Send It
                   <Send className="w-4 h-4" />
                 </>
               )}
@@ -84,20 +81,19 @@ const ContactSection = () => {
         {/* Social links */}
         <div className="flex justify-center gap-3 mt-10">
           {[
-            { icon: Github, color: "bg-cartoon-mint", label: "GitHub" },
-            { icon: Linkedin, color: "bg-cartoon-blue", label: "LinkedIn" },
-            { icon: Twitter, color: "bg-cartoon-yellow", label: "Twitter" },
-            { icon: Mail, color: "bg-cartoon-pink", label: "Email" },
-          ].map((s, i) => {
+            { icon: Github, label: "GitHub", bg: "bg-card" },
+            { icon: Linkedin, label: "LinkedIn", bg: "bg-accent" },
+            { icon: Twitter, label: "Twitter", bg: "bg-primary text-primary-foreground" },
+            { icon: Mail, label: "Email", bg: "bg-card" },
+          ].map((s) => {
             const Icon = s.icon;
             return (
               <a
                 key={s.label}
                 href="#"
                 aria-label={s.label}
-                className={`${s.color} w-12 h-12 rounded-xl border-cartoon-thick shadow-chunky-sm flex items-center justify-center hover-pop ${
-                  i % 2 === 0 ? "-rotate-3" : "rotate-3"
-                }`}
+                className={`${s.bg} w-12 h-12 rounded-lg border-[3px] border-foreground flex items-center justify-center hover-pop`}
+                style={{ boxShadow: "0 4px 0 0 hsl(var(--comic-navy))" }}
               >
                 <Icon className="w-5 h-5" />
               </a>
@@ -105,10 +101,11 @@ const ContactSection = () => {
           })}
         </div>
 
-        {/* Footer */}
+        {/* Footer — comic credits */}
         <div className="mt-16 text-center">
-          <p className="font-hand text-xl text-muted-foreground">
-            made with ❤️ + ☕ + ✨ by Boopathi Raja · 2026
+          <p className="font-display text-xl tracking-widest text-foreground/60">— THE END —</p>
+          <p className="font-hand text-lg text-foreground/60 mt-2">
+            written + drawn by Boopathi Raja · 2026
           </p>
         </div>
       </div>
