@@ -54,7 +54,7 @@ const HeroSection = () => {
               onClick={() =>
                 document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
               }
-              className="group inline-flex items-center justify-center gap-2 px-7 py-3 rounded-2xl bg-primary text-primary-foreground font-bold border-cartoon-thick shadow-chunky hover-press"
+              className="group inline-flex items-center justify-center gap-2 px-7 py-3 rounded-2xl bg-primary text-primary-foreground font-bold border-cartoon-thick shadow-chunky hover-pop"
             >
               See My Work
               <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
@@ -63,7 +63,7 @@ const HeroSection = () => {
               onClick={() =>
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
               }
-              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-2xl bg-card text-foreground font-bold border-cartoon-thick shadow-chunky hover-press"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-2xl bg-card text-foreground font-bold border-cartoon-thick shadow-chunky hover-pop"
             >
               Say Hi 👋
             </button>
