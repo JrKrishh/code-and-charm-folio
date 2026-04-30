@@ -117,8 +117,10 @@ const ProjectsSection = () => {
                       <Github className="w-4 h-4" />
                     </a>
                     <a
-                      href="#"
-                      aria-label="Live link"
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${project.title}`}
                       className="w-9 h-9 rounded-lg bg-primary text-primary-foreground border-[2.5px] border-foreground flex items-center justify-center hover-wiggle"
                     >
                       <ExternalLink className="w-4 h-4" />
