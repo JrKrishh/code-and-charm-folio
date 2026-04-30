@@ -52,15 +52,14 @@ const Navbar = () => {
               onClick={() => handleClick(item.href)}
               className={`px-4 py-1.5 rounded-full font-semibold text-sm transition-all ${
                 active === item.href
-                  ? "bg-primary text-primary-foreground border-cartoon shadow-chunky-sm"
-                  : "text-foreground hover:bg-muted"
+                  ? "bg-primary text-primary-foreground border-cartoon shadow-chunky-sm hover-pop"
+                  : "text-foreground hover:bg-muted hover:-translate-y-0.5 hover:rotate-[-2deg]"
               }`}
             >
               {item.label}
             </button>
           ))}
         </div>
-
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden w-10 h-10 rounded-xl bg-cartoon-mint border-cartoon flex items-center justify-center"
