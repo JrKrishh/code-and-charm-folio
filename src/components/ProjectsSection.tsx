@@ -76,10 +76,10 @@ const ProjectsSection = () => {
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-2xl font-bold">{project.title}</h3>
                   <div className="flex gap-2 shrink-0">
-                    <a className="w-9 h-9 rounded-xl bg-muted border-cartoon flex items-center justify-center hover:bg-cartoon-yellow transition-colors cursor-pointer" aria-label="GitHub">
+                    <a className="w-9 h-9 rounded-xl bg-muted border-cartoon flex items-center justify-center hover:bg-cartoon-yellow hover-wiggle cursor-pointer" aria-label="GitHub">
                       <Github className="w-4 h-4" />
                     </a>
-                    <a className="w-9 h-9 rounded-xl bg-muted border-cartoon flex items-center justify-center hover:bg-cartoon-yellow transition-colors cursor-pointer" aria-label="Live link">
+                    <a className="w-9 h-9 rounded-xl bg-muted border-cartoon flex items-center justify-center hover:bg-cartoon-yellow hover-wiggle cursor-pointer" aria-label="Live link">
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
@@ -93,7 +93,7 @@ const ProjectsSection = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-3 py-1 rounded-full bg-cartoon-yellow border-cartoon font-bold"
+                      className="text-xs px-3 py-1 rounded-full bg-cartoon-yellow border-cartoon font-bold hover-wiggle cursor-default"
                     >
                       {tag}
                     </span>

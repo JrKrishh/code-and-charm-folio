@@ -95,7 +95,7 @@ const ContactSection = () => {
                 key={s.label}
                 href="#"
                 aria-label={s.label}
-                className={`${s.color} w-12 h-12 rounded-xl border-cartoon-thick shadow-chunky-sm flex items-center justify-center hover-press ${
+                className={`${s.color} w-12 h-12 rounded-xl border-cartoon-thick shadow-chunky-sm flex items-center justify-center hover-pop ${
                   i % 2 === 0 ? "-rotate-3" : "rotate-3"
                 }`}
               >
