@@ -68,23 +68,11 @@ const AboutSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Bio with avatar */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-6 mb-8">
-              <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-primary/30 animate-glow-pulse shrink-0">
-                <img
-                  src={avatarImg}
-                  alt="Boopathi Raja"
-                  loading="lazy"
-                  width={512}
-                  height={512}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-foreground">Boopathi Raja</h3>
-                <p className="text-sm text-primary tracking-wide">Vibe Coder • AI Enthusiast</p>
-              </div>
+          {/* Bio side */}
+          <div className="space-y-6 order-2 lg:order-1">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-1">Boopathi Raja</h3>
+              <p className="text-sm text-primary tracking-[0.2em] uppercase">Vibe Coder • AI Enthusiast</p>
             </div>
 
             <p className="text-muted-foreground leading-relaxed">
@@ -118,11 +106,35 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Skill nodes */}
-          <div className="grid grid-cols-3 gap-6 justify-items-center">
-            {skills.map((skill, i) => (
-              <SkillNode key={skill.name} {...skill} index={i} />
-            ))}
+          {/* Avatar showcase */}
+          <div className="order-1 lg:order-2 relative flex flex-col items-center">
+            <div className="relative group">
+              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/30 via-secondary/20 to-primary/30 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary via-secondary to-primary opacity-50 blur-sm" />
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border border-primary/40">
+                <img
+                  src={avatarImg}
+                  alt="Boopathi Raja"
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-primary" />
+                <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-primary" />
+                <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-primary" />
+                <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-primary" />
+              </div>
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-background border border-primary/40 text-xs tracking-[0.2em] uppercase text-primary">
+                Online
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-12 w-full justify-items-center">
+              {skills.map((skill, i) => (
+                <SkillNode key={skill.name} {...skill} index={i} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
