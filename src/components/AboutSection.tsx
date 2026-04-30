@@ -101,7 +101,7 @@ const AboutSection = () => {
               return (
                 <div
                   key={skill.name}
-                  className={`${skill.color} border-cartoon-thick rounded-2xl shadow-chunky px-5 py-3 flex items-center gap-2 hover-press cursor-default ${
+                  className={`${skill.color} border-cartoon-thick rounded-2xl shadow-chunky px-5 py-3 flex items-center gap-2 hover-wiggle cursor-default ${
                     i % 2 === 0 ? "-rotate-2" : "rotate-2"
                   }`}
                 >
