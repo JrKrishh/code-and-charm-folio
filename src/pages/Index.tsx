@@ -7,23 +7,23 @@ import ContactSection from "@/components/ContactSection";
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background overflow-x-hidden">
-      {/* Background dot pattern */}
+      {/* Halftone paper texture overlay */}
       <div
         aria-hidden="true"
-        className="fixed inset-0 pointer-events-none opacity-[0.15]"
+        className="fixed inset-0 pointer-events-none opacity-[0.18]"
         style={{
           backgroundImage:
-            "radial-gradient(hsl(var(--foreground)) 1.5px, transparent 1.5px)",
-          backgroundSize: "28px 28px",
+            "radial-gradient(hsl(var(--comic-navy)) 1px, transparent 1.2px)",
+          backgroundSize: "14px 14px",
         }}
       />
       <Navbar />
-      <div className="relative z-10">
+      <main className="relative z-10">
         <HeroSection />
         <ProjectsSection />
         <AboutSection />
         <ContactSection />
-      </div>
+      </main>
     </div>
   );
 };
