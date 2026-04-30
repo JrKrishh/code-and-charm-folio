@@ -1,45 +1,49 @@
 import { ExternalLink, Github } from "lucide-react";
-import projectAiChat from "@/assets/project-ai-chat.jpg";
-import projectDashboard from "@/assets/project-dashboard.jpg";
-import projectMusic from "@/assets/project-music.jpg";
-import projectCode from "@/assets/project-code.jpg";
+import projectSteelflow from "@/assets/project-steelflow.jpg";
+import projectWomenszone from "@/assets/project-womenszone.jpg";
+import projectSignature from "@/assets/project-signature.jpg";
+import projectPrepli from "@/assets/project-prepli.jpg";
 
 const projects = [
   {
-    title: "AI Chat Buddy",
+    title: "Steel Flow",
     issue: "Issue #01",
-    description: "A friendly chat companion that answers questions with personality and flair.",
-    tags: ["React", "AI", "TypeScript"],
-    image: projectAiChat,
-    sfx: "ZAP!",
+    description: "Full-stack steel shop billing & inventory system with invoicing, stock tracking, and reports.",
+    tags: ["React", "Lovable Cloud", "POS"],
+    image: projectSteelflow,
+    sfx: "CLANG!",
     accent: "hsl(var(--comic-yellow))",
+    live: "https://billdashpos.lovable.app",
   },
   {
-    title: "Happy Dashboard",
+    title: "Women's Zone",
     issue: "Issue #02",
-    description: "Data viz that doesn't make you sleepy. Charts that pack a punch.",
-    tags: ["Next.js", "D3.js", "Charts"],
-    image: projectDashboard,
+    description: "Billing & inventory platform built for a clothing retail store — fully responsive POS.",
+    tags: ["React", "Inventory", "Retail"],
+    image: projectWomenszone,
     sfx: "POW!",
     accent: "hsl(var(--comic-red))",
+    live: "https://womenszone.lovable.app",
   },
   {
-    title: "Vibe Music App",
+    title: "The Signature",
     issue: "Issue #03",
-    description: "AI-curated playlists that match your mood. Drop the beat 🎧",
-    tags: ["React Native", "Spotify", "ML"],
-    image: projectMusic,
-    sfx: "BOOM!",
+    description: "Bakery POS with KOT printing & live stock control for Cakes & Pastries shop.",
+    tags: ["POS", "KOT", "Bakery"],
+    image: projectSignature,
+    sfx: "YUM!",
     accent: "hsl(var(--comic-navy))",
+    live: "https://thesignaturepos.lovable.app",
   },
   {
-    title: "Code Pal",
+    title: "Prepli",
     issue: "Issue #04",
-    description: "Pair programming with an AI that actually gets your jokes.",
-    tags: ["WebSockets", "GPT-4", "Monaco"],
-    image: projectCode,
-    sfx: "BAM!",
+    description: "Learning app for Indian govt exam prep — TNPSC, UPSC, banking & railway aspirants.",
+    tags: ["EdTech", "Quiz", "AI"],
+    image: projectPrepli,
+    sfx: "AHA!",
     accent: "hsl(var(--comic-yellow))",
+    live: "https://prepli.lovable.app",
   },
 ];
 
@@ -113,8 +117,10 @@ const ProjectsSection = () => {
                       <Github className="w-4 h-4" />
                     </a>
                     <a
-                      href="#"
-                      aria-label="Live link"
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${project.title}`}
                       className="w-9 h-9 rounded-lg bg-primary text-primary-foreground border-[2.5px] border-foreground flex items-center justify-center hover-wiggle"
                     >
                       <ExternalLink className="w-4 h-4" />
