@@ -68,23 +68,11 @@ const AboutSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Bio with avatar */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-6 mb-8">
-              <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-primary/30 animate-glow-pulse shrink-0">
-                <img
-                  src={avatarImg}
-                  alt="Boopathi Raja"
-                  loading="lazy"
-                  width={512}
-                  height={512}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-foreground">Boopathi Raja</h3>
-                <p className="text-sm text-primary tracking-wide">Vibe Coder • AI Enthusiast</p>
-              </div>
+          {/* Bio side */}
+          <div className="space-y-6 order-2 lg:order-1">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-1">Boopathi Raja</h3>
+              <p className="text-sm text-primary tracking-[0.2em] uppercase">Vibe Coder • AI Enthusiast</p>
             </div>
 
             <p className="text-muted-foreground leading-relaxed">
