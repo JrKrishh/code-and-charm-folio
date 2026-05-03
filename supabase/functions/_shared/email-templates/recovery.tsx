@@ -10,6 +10,7 @@ import {
   Heading,
   Html,
   Preview,
+  Section,
   Text,
 } from 'npm:@react-email/components@0.0.22'
 
@@ -24,20 +25,20 @@ export const RecoveryEmail = ({
 }: RecoveryEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>Reset your password for {siteName}</Preview>
+    <Preview>BAM! Reset your password for {siteName}</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Reset your password</Heading>
+        <Section style={badge}>★ PASSWORD RESCUE ★</Section>
+        <Heading style={h1}>FORGOT YOUR CODE?</Heading>
         <Text style={text}>
-          We received a request to reset your password for {siteName}. Click
-          the button below to choose a new password.
+          No worries, hero. We got a request to reset your password for{' '}
+          <strong>{siteName}</strong>. Hit the button below to set a new one.
         </Text>
         <Button style={button} href={confirmationUrl}>
-          Reset Password
+          POW! Reset Password →
         </Button>
         <Text style={footer}>
-          If you didn't request a password reset, you can safely ignore this
-          email. Your password will not be changed.
+          Didn't ask for this? Ignore this email — your password stays safe.
         </Text>
       </Container>
     </Body>
@@ -46,26 +47,59 @@ export const RecoveryEmail = ({
 
 export default RecoveryEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
+const main = {
+  backgroundColor: '#ffffff',
+  fontFamily: 'Georgia, "Roboto Slab", serif',
+}
+const container = {
+  padding: '32px 28px',
+  maxWidth: '560px',
+  border: '3px solid hsl(210, 29%, 24%)',
+  borderRadius: '12px',
+  margin: '24px auto',
+  backgroundColor: 'hsl(48, 60%, 97%)',
+}
+const badge = {
+  display: 'inline-block',
+  backgroundColor: 'hsl(47, 86%, 70%)',
+  color: 'hsl(210, 29%, 24%)',
+  border: '2px solid hsl(210, 29%, 24%)',
+  borderRadius: '999px',
+  padding: '4px 14px',
+  fontSize: '12px',
   fontWeight: 'bold' as const,
-  color: '#000000',
+  letterSpacing: '2px',
+  margin: '0 0 16px',
+}
+const h1 = {
+  fontSize: '34px',
+  fontWeight: 900 as const,
+  color: 'hsl(6, 63%, 46%)',
+  letterSpacing: '1px',
   margin: '0 0 20px',
+  textTransform: 'uppercase' as const,
 }
 const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
+  fontSize: '15px',
+  color: 'hsl(210, 29%, 24%)',
+  lineHeight: '1.6',
+  margin: '0 0 20px',
 }
 const button = {
-  backgroundColor: '#000000',
+  backgroundColor: 'hsl(6, 63%, 46%)',
   color: '#ffffff',
-  fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
+  fontSize: '15px',
+  fontWeight: 'bold' as const,
+  letterSpacing: '1px',
+  borderRadius: '12px',
+  padding: '14px 24px',
   textDecoration: 'none',
+  border: '3px solid hsl(210, 29%, 24%)',
+  textTransform: 'uppercase' as const,
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
+const footer = {
+  fontSize: '12px',
+  color: 'hsl(210, 29%, 35%)',
+  margin: '32px 0 0',
+  fontStyle: 'italic' as const,
+}
