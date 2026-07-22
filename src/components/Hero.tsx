@@ -1,109 +1,193 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import TerminalCard from "@/components/TerminalCard";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
 
+/**
+ * "The Shipping Ledger" — see design/HERO-BRIEF.md.
+ *
+ * The subject builds systems of record, so the hero IS one: a manifest of
+ * real production software. No split columns, no badge, no CTA pair, no stat
+ * tiles — the ledger rows are the proof, the numbers, and the calls to
+ * action all at once. Availability is the last open row, not a pill.
+ */
+
+/** Client descriptors for the "built for" column — presentation-only. */
+const BUILT_FOR: Record<string, string> = {
+  "steel-flow": "steel trading co.",
+  "womens-zone": "clothing retailer",
+  "the-signature": "cakes & pastries shop",
+  prepli: "govt-exam aspirants",
+};
+
 const Hero = () => {
-  const shipped = projects.filter((p) => p.status === "Production").length;
+  const production = projects.filter((p) => p.status === "Production");
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 sm:pt-36 sm:pb-24">
-      {/* Layered backdrop: blueprint grid under an amber wash. Both are
-          pointer-events-none so they never intercept a click. */}
-      <div aria-hidden="true" className="bg-grid pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px]" />
+    <section className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20">
+      {/* Near-flat backdrop: one faint amber wash, no texture — the ruled
+          ledger lines below are the texture. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[480px]
-                   bg-[radial-gradient(55%_90%_at_50%_0%,hsl(var(--accent)/0.10),transparent_70%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[380px]
+                   bg-[radial-gradient(50%_80%_at_50%_0%,hsl(var(--accent)/0.06),transparent_70%)]"
       />
 
       <div className="container-page">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <p className="animate-rise mono inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-3 py-1.5 text-xs text-ink-secondary backdrop-blur-sm">
-              <span aria-hidden="true" className="animate-pulse-dot size-1.5 rounded-full bg-[hsl(var(--status-production))]" />
-              Open to freelance &amp; contract work
-            </p>
+        {/* Document header — marginalia, like the top rule of a ledger page. */}
+        <div className="animate-rise flex items-baseline justify-between gap-4 border-b border-line pb-3">
+          <p className="mono text-[11px] uppercase tracking-[0.18em] text-ink-tertiary">
+            Boopathi Raja — Full-stack &amp; AI engineer
+          </p>
+          <p className="mono hidden text-[11px] uppercase tracking-[0.18em] text-ink-tertiary sm:block">
+            India · IST (UTC+05:30)
+          </p>
+        </div>
 
-            <h1
-              className="animate-rise mt-7 text-balance font-display text-4xl font-bold leading-[1.06] text-ink sm:text-6xl xl:text-7xl"
-              style={{ animationDelay: "60ms" }}
-            >
-              I build software
-              <br />
-              that{" "}
-              <span className="relative inline-block text-accent">
-                ships
-                {/* Hand-drawn-feeling underline stroke. */}
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 120 12"
-                  preserveAspectRatio="none"
-                  className="absolute -bottom-2 left-0 h-3 w-full text-accent/70"
-                >
-                  <path
-                    d="M3 9 C 30 3, 90 3, 117 8"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                </svg>
+        {/* The statement. */}
+        <h1
+          className="animate-rise mt-10 font-display font-bold leading-[0.98] text-ink"
+          style={{ animationDelay: "60ms", fontSize: "clamp(3rem, 8.5vw, 7rem)" }}
+        >
+          I build software
+          <br />
+          <span className="whitespace-nowrap">
+            <span className="text-accent">that ships.</span>
+            {production.length > 0 && (
+              <span
+                aria-hidden="true"
+                className="animate-stamp mono ml-4 inline-block -translate-y-3 rounded
+                           border-2 border-[hsl(var(--status-production)/0.8)] px-2.5 py-1 align-middle
+                           text-[clamp(10px,1.1vw,13px)] font-medium uppercase tracking-[0.14em]
+                           text-[hsl(var(--status-production))] sm:ml-6"
+              >
+                In production ×{production.length}
               </span>
-              .
-            </h1>
+            )}
+          </span>
+        </h1>
 
-            <p
-              className="animate-rise mt-7 max-w-xl text-pretty text-base leading-relaxed text-ink-secondary sm:text-lg"
-              style={{ animationDelay: "120ms" }}
-            >
-              Billing systems running in real shops, AI agents that do real
-              work, and inference infrastructure built from first principles —
-              every project labelled honestly with how far it got.
-            </p>
+        {/* Margin note — the one deliberate alignment break on the page. */}
+        <p
+          className="animate-rise ml-auto mt-8 max-w-[34ch] text-pretty text-[17px] leading-relaxed
+                     text-ink-secondary lg:text-right"
+          style={{ animationDelay: "120ms" }}
+        >
+          Billing systems in real shops, AI agents that do real work, inference
+          infrastructure from first principles — each entry below labelled
+          honestly with how far it got.
+        </p>
 
-            <div
-              className="animate-rise mt-9 flex flex-wrap items-center gap-3"
-              style={{ animationDelay: "180ms" }}
-            >
-              <Link
-                to="/work"
-                className="group mono inline-flex h-12 items-center gap-2 rounded-lg bg-accent px-6 text-sm font-medium
-                           text-[hsl(var(--on-accent))] transition-colors hover:bg-[hsl(var(--accent-hover))]"
-              >
-                View the work
-                <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-              </Link>
-              <a
-                href="/#contact"
-                className="mono inline-flex h-12 items-center rounded-lg border border-line bg-surface/40 px-6 text-sm
-                           text-ink-secondary backdrop-blur-sm transition-colors hover:border-line-strong hover:text-ink"
-              >
-                Get in touch
-              </a>
-            </div>
-
-            <dl
-              className="animate-rise mt-14 grid max-w-md grid-cols-3 divide-x divide-line border-t border-line pt-7"
-              style={{ animationDelay: "240ms" }}
-            >
-              {[
-                { label: "In production", value: `${shipped}` },
-                { label: "Projects built", value: `${projects.length}` },
-                { label: "Years shipping", value: "3+" },
-              ].map((stat, i) => (
-                <div key={stat.label} className={i === 0 ? "pr-5" : "px-5"}>
-                  <dd className="mono text-3xl font-medium text-ink">{stat.value}</dd>
-                  <dt className="mono mt-1 text-[11px] uppercase tracking-wider text-ink-tertiary">
-                    {stat.label}
-                  </dt>
-                </div>
-              ))}
-            </dl>
+        {/* The ledger. */}
+        <div className="mt-10">
+          <div
+            className="animate-rise mono grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 border-y
+                       border-line py-2 text-[11px] uppercase tracking-[0.18em] text-ink-tertiary
+                       md:grid-cols-[2.5rem_1fr_12rem_9rem_2rem]"
+            style={{ animationDelay: "180ms" }}
+          >
+            <span>№</span>
+            <span>System</span>
+            <span className="hidden md:block">Built for</span>
+            <span className="hidden md:block">Status</span>
+            <span aria-hidden="true" />
           </div>
 
-          <div className="animate-rise" style={{ animationDelay: "200ms" }}>
-            <TerminalCard />
+          <ul>
+            {production.map((project, i) => (
+              <li key={project.slug} className="animate-rise" style={{ animationDelay: `${220 + i * 40}ms` }}>
+                <Link
+                  to={`/work/${project.slug}`}
+                  aria-label={`${project.name} — ${project.tagline} — in production`}
+                  className="group grid min-h-[3.5rem] grid-cols-[2.5rem_1fr_2rem] items-center gap-x-4
+                             border-b border-line py-3 transition-colors hover:bg-surface-subtle
+                             focus-visible:bg-surface-subtle md:grid-cols-[2.5rem_1fr_12rem_9rem_2rem]"
+                >
+                  <span className="mono text-sm text-ink-tertiary">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <span className="flex min-w-0 items-baseline gap-4">
+                    <span className="shrink-0 font-display text-lg font-semibold text-ink transition-colors group-hover:text-accent sm:text-xl">
+                      {project.name}
+                    </span>
+                    {/* Receipt leader — needs width to mean anything, so md+ only. */}
+                    <span aria-hidden="true" className="leader-dots hidden h-0.5 flex-1 self-center md:block" />
+                  </span>
+
+                  <span className="mono hidden text-xs text-ink-tertiary md:block">
+                    {BUILT_FOR[project.slug] ?? project.category.toLowerCase()}
+                  </span>
+
+                  <span className="mono hidden items-center gap-1.5 text-xs text-ink-secondary md:flex">
+                    <span aria-hidden="true" className="size-1.5 rounded-full bg-[hsl(var(--status-production))]" />
+                    production
+                  </span>
+
+                  <ArrowRight className="size-4 justify-self-end text-ink-tertiary transition-all duration-200 group-hover:translate-x-1 group-hover:text-accent" />
+
+                  {/* Mobile second line: descriptor + status, indented under the name. */}
+                  <span className="col-start-2 mono flex items-center gap-3 text-[11px] text-ink-tertiary md:hidden">
+                    {BUILT_FOR[project.slug] ?? project.category.toLowerCase()}
+                    <span className="flex items-center gap-1.5 text-ink-secondary">
+                      <span aria-hidden="true" className="size-1 rounded-full bg-[hsl(var(--status-production))]" />
+                      production
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+
+            {/* The open slot — availability as a ledger entry, not a badge. */}
+            <li className="animate-rise" style={{ animationDelay: `${220 + production.length * 40}ms` }}>
+              <a
+                href="/#contact"
+                aria-label="Your project — open slot — currently accepting work — go to contact"
+                className="group grid min-h-[3.5rem] grid-cols-[2.5rem_1fr_2rem] items-center gap-x-4
+                           border-b border-line py-3 transition-colors hover:bg-surface-subtle
+                           focus-visible:bg-surface-subtle md:grid-cols-[2.5rem_1fr_12rem_9rem_2rem]"
+              >
+                <span className="mono text-sm text-ink-tertiary">
+                  {String(production.length + 1).padStart(2, "0")}
+                </span>
+
+                <span className="flex min-w-0 items-baseline gap-4">
+                  <span className="shrink-0 font-display text-lg font-semibold text-ink-secondary transition-colors group-hover:text-accent sm:text-xl">
+                    Your project
+                  </span>
+                  <span aria-hidden="true" className="leader-dots hidden h-0.5 flex-1 self-center md:block" />
+                </span>
+
+                <span className="mono hidden text-xs text-ink-tertiary md:block">open slot</span>
+
+                <span className="mono hidden items-center gap-1.5 text-xs text-accent md:flex">
+                  <span aria-hidden="true" className="animate-pulse-dot size-1.5 rounded-full bg-accent" />
+                  accepting work
+                </span>
+
+                <ArrowRight className="size-4 justify-self-end text-ink-tertiary transition-all duration-200 group-hover:translate-x-1 group-hover:text-accent" />
+
+                <span className="col-start-2 mono flex items-center gap-3 text-[11px] text-ink-tertiary md:hidden">
+                  open slot
+                  <span className="flex items-center gap-1.5 text-accent">
+                    <span aria-hidden="true" className="animate-pulse-dot size-1 rounded-full bg-accent" />
+                    accepting work
+                  </span>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <div
+            className="animate-rise mt-4 flex justify-end"
+            style={{ animationDelay: `${260 + production.length * 40}ms` }}
+          >
+            <Link
+              to="/work"
+              className="group mono inline-flex h-11 items-center gap-1.5 text-xs text-ink-secondary transition-colors hover:text-ink"
+            >
+              browse all {projects.length} projects
+              <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
           </div>
         </div>
       </div>
