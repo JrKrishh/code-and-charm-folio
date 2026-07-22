@@ -1,116 +1,86 @@
-import { useState } from "react";
-import { Send, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 
-const ContactSection = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+const EMAIL = "hello@boopathiraja.dev";
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: "", email: "", message: "" });
-  };
+const channels = [
+  {
+    label: "Email",
+    value: EMAIL,
+    href: `mailto:${EMAIL}?subject=Project%20enquiry`,
+    Icon: Mail,
+  },
+  {
+    label: "GitHub",
+    value: "github.com/JrKrishh",
+    href: "https://github.com/JrKrishh",
+    Icon: Github,
+  },
+  {
+    label: "LinkedIn",
+    value: "Boopathi Raja",
+    href: "https://www.linkedin.com/in/boopathi-raja-dev",
+    Icon: Linkedin,
+  },
+];
 
-  return (
-    <section id="contact" className="relative py-24 px-6">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-4 btn-comic-pill halftone-yellow">
-            <span>★ The Final Panel ★</span>
-          </div>
-          <h2 className="title-comic-red text-6xl sm:text-7xl md:text-8xl">
-            DROP A LINE!
+/**
+ * Direct channels only.
+ *
+ * The previous version of this site rendered a form that showed a success
+ * message and then discarded the input — no backend, no table, no email. A
+ * link that provably opens the visitor's mail client beats a form that
+ * silently drops enquiries. A real form can replace this once a
+ * `contact_messages` table with RLS exists to receive it.
+ */
+const ContactSection = () => (
+  <section id="contact" className="scroll-mt-24 border-t border-line py-24">
+    <div className="container-page">
+      <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+        <div>
+          <p className="eyebrow">Contact</p>
+          <h2 className="mt-4 text-balance font-display text-3xl font-bold text-ink sm:text-4xl">
+            Got something worth building?
           </h2>
-          <p className="font-hand text-2xl text-foreground/70 mt-4">
-            send a signal — I reply faster than a speeding bullet 🚀
+          <p className="mt-4 max-w-md text-pretty leading-relaxed text-ink-secondary">
+            Available for freelance and contract work — product builds, AI
+            integration, and internal tools. I reply within a day.
           </p>
+
+          <a
+            href={`mailto:${EMAIL}?subject=Project%20enquiry`}
+            className="mono mt-8 inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-5 text-sm font-medium text-[hsl(var(--on-accent))] transition-colors hover:bg-[hsl(var(--accent-hover))]"
+          >
+            Start a conversation
+            <ArrowUpRight className="size-4" />
+          </a>
         </div>
 
-        <div className="comic-panel p-8">
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label className="block font-display text-base tracking-widest mb-2 text-foreground/80">YOUR NAME</label>
-              <input
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-background border-[3px] border-foreground font-body focus:outline-none focus:bg-accent/30 transition-colors"
-                placeholder="What should I call you?"
-              />
-            </div>
-
-            <div>
-              <label className="block font-display text-base tracking-widest mb-2 text-foreground/80">EMAIL</label>
-              <input
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-background border-[3px] border-foreground font-body focus:outline-none focus:bg-accent/30 transition-colors"
-                placeholder="you@cool.com"
-              />
-            </div>
-
-            <div>
-              <label className="block font-display text-base tracking-widest mb-2 text-foreground/80">MESSAGE</label>
-              <textarea
-                required
-                rows={5}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-background border-[3px] border-foreground font-body focus:outline-none focus:bg-accent/30 transition-colors resize-none"
-                placeholder="Tell me about your idea, project, or just say hi!"
-              />
-            </div>
-
-            <button type="submit" className="btn-comic-red w-full">
-              {submitted ? (
-                <>SENT! <span className="sfx text-xl ml-1">ZAP!</span></>
-              ) : (
-                <>
-                  Send It
-                  <Send className="w-4 h-4" />
-                </>
-              )}
-            </button>
-          </form>
-        </div>
-
-        {/* Social links */}
-        <div className="flex justify-center gap-3 mt-10">
-          {[
-            { icon: Github, label: "GitHub", bg: "bg-card" },
-            { icon: Linkedin, label: "LinkedIn", bg: "bg-accent" },
-            { icon: Twitter, label: "Twitter", bg: "bg-primary text-primary-foreground" },
-            { icon: Mail, label: "Email", bg: "bg-card" },
-          ].map((s) => {
-            const Icon = s.icon;
-            return (
+        <ul className="space-y-3">
+          {channels.map(({ label, value, href, Icon }) => (
+            <li key={label}>
               <a
-                key={s.label}
-                href="#"
-                aria-label={s.label}
-                className={`${s.bg} w-12 h-12 rounded-lg border-[3px] border-foreground flex items-center justify-center hover-pop`}
-                style={{ boxShadow: "0 4px 0 0 hsl(var(--comic-navy))" }}
+                href={href}
+                target={href.startsWith("mailto:") ? undefined : "_blank"}
+                rel="noreferrer noopener"
+                className="surface-card group flex items-center gap-4 p-4 hover:border-line-strong hover:bg-surface-hover"
               >
-                <Icon className="w-5 h-5" />
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-surface-subtle text-ink-secondary transition-colors group-hover:text-accent">
+                  <Icon className="size-4" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="mono block text-[11px] uppercase tracking-wider text-ink-tertiary">
+                    {label}
+                  </span>
+                  <span className="block truncate text-sm text-ink">{value}</span>
+                </span>
+                <ArrowUpRight className="size-4 shrink-0 text-ink-tertiary transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
               </a>
-            );
-          })}
-        </div>
-
-        {/* Footer — comic credits */}
-        <div className="mt-16 text-center">
-          <p className="font-display text-xl tracking-widest text-foreground/60">— THE END —</p>
-          <p className="font-hand text-lg text-foreground/60 mt-2">
-            written + drawn by Boopathi Raja · 2026
-          </p>
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default ContactSection;

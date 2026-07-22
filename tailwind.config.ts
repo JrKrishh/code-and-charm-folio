@@ -57,15 +57,30 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        comic: {
-          cream: "hsl(var(--comic-cream))",
-          paper: "hsl(var(--comic-paper))",
-          red: "hsl(var(--comic-red))",
-          "red-dark": "hsl(var(--comic-red-dark))",
-          yellow: "hsl(var(--comic-yellow))",
-          navy: "hsl(var(--comic-navy))",
-          "navy-light": "hsl(var(--comic-navy-light))",
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          hover: "hsl(var(--surface-hover))",
+          subtle: "hsl(var(--bg-subtle))",
         },
+        ink: {
+          DEFAULT: "hsl(var(--text))",
+          secondary: "hsl(var(--text-secondary))",
+          tertiary: "hsl(var(--text-tertiary))",
+        },
+        line: {
+          DEFAULT: "hsl(var(--border))",
+          strong: "hsl(var(--border-strong))",
+        },
+        status: {
+          production: "hsl(var(--status-production))",
+          mvp: "hsl(var(--status-mvp))",
+          prototype: "hsl(var(--status-prototype))",
+        },
+      },
+      fontFamily: {
+        display: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
