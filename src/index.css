@@ -148,6 +148,39 @@
   }
 
   /*
+    Card cover patterns — one per category, so the cover band carries
+    information, not just decoration. All draw from the single accent at low
+    alpha; density stays subtle enough that overlaid text keeps contrast.
+  */
+  .pattern-diag {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      hsl(var(--accent) / 0.09) 0 1px,
+      transparent 1px 11px
+    );
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(hsl(var(--accent) / 0.16) 1px, transparent 1.4px);
+    background-size: 15px 15px;
+  }
+
+  .pattern-mesh {
+    background-image:
+      linear-gradient(hsl(var(--accent) / 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--accent) / 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .pattern-lines {
+    background-image: repeating-linear-gradient(
+      90deg,
+      hsl(var(--accent) / 0.08) 0 1px,
+      transparent 1px 13px
+    );
+  }
+
+  /*
     Hero backdrop: a faint blueprint grid that fades out radially, so the top
     of the page has texture without the content ever sitting on visual noise.
   */
@@ -179,6 +212,16 @@
 
   .animate-pulse-dot {
     animation: pulse-dot 2.4s ease-in-out infinite;
+  }
+
+  /* Terminal caret. step-end keeps it a hard blink, not a fade. */
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  .animate-blink {
+    animation: blink 1.1s step-end infinite;
   }
 
   /* Scroll-reveal states, driven by the Reveal component. */

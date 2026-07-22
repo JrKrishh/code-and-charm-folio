@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import { CATEGORY_PATTERN } from "@/components/ProjectCover";
 import StatusBadge from "@/components/StatusBadge";
 import type { Project } from "@/data/projects";
 
@@ -11,12 +12,26 @@ import type { Project } from "@/data/projects";
 const SpotlightCard = ({ project }: { project: Project }) => {
   return (
     <article className="surface-card card-lift group relative overflow-hidden p-7 sm:p-9">
-      {/* Corner wash keyed to the accent — texture, not information. */}
+      {/* Patterned wash + ghost monogram, matching the grid cards' visual
+          language at flagship scale. Fades out leftward so the copy never
+          sits on texture. */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-y-0 right-0 w-2/3 ${CATEGORY_PATTERN[project.category]}
+                    [-webkit-mask-image:linear-gradient(to_left,black,transparent)]
+                    [mask-image:linear-gradient(to_left,black,transparent)]`}
+      />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full
                    bg-[radial-gradient(closest-side,hsl(var(--accent)/0.10),transparent)]"
       />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-10 right-4 select-none font-display text-[11rem] font-bold leading-none text-ink opacity-[0.05]"
+      >
+        {project.name.charAt(0)}
+      </span>
 
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
         <div>

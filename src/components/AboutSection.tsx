@@ -1,21 +1,26 @@
 import avatarImg from "@/assets/avatar.png";
+import { Boxes, Bot, Store, Cpu } from "lucide-react";
 
 const capabilities = [
   {
     title: "Product engineering",
     body: "End-to-end builds — schema, API, UI, deploy. React, TypeScript, Next.js, TanStack, Supabase, Postgres.",
+    Icon: Boxes,
   },
   {
     title: "AI systems",
     body: "Agents, RAG, and LLM integration that survive contact with real users — plus the eval and guardrail work that keeps them honest.",
+    Icon: Bot,
   },
   {
     title: "Business tooling",
     body: "POS, billing, and inventory systems for shops that were running on paper. Built for the counter, not the demo.",
+    Icon: Store,
   },
   {
     title: "Infrastructure",
     body: "Inference runtimes, on-device model work, and fine-tuning pipelines — the layer under the product.",
+    Icon: Cpu,
   },
 ];
 
@@ -69,10 +74,13 @@ const AboutSection = () => (
         </div>
 
         <ul className="grid gap-3 sm:grid-cols-2">
-          {capabilities.map((c) => (
-            <li key={c.title} className="surface-card p-5">
-              <h3 className="font-display text-base font-semibold text-ink">{c.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-secondary">{c.body}</p>
+          {capabilities.map(({ title, body, Icon }) => (
+            <li key={title} className="surface-card card-lift p-5">
+              <span className="grid size-10 place-items-center rounded-lg border border-line bg-surface-subtle text-accent">
+                <Icon className="size-[18px]" aria-hidden="true" />
+              </span>
+              <h3 className="mt-4 font-display text-base font-semibold text-ink">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-secondary">{body}</p>
             </li>
           ))}
         </ul>
