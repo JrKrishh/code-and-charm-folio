@@ -61,7 +61,7 @@ const SiteNav = () => {
           </ul>
 
           <a
-            href="mailto:hello@boopathiraja.dev?subject=Project%20enquiry"
+            href="mailto:manir1179@gmail.com?subject=Project%20enquiry"
             className="mono ml-2 hidden h-9 items-center rounded-lg bg-accent px-4 text-xs font-medium
                        text-[hsl(var(--on-accent))] transition-colors hover:bg-[hsl(var(--accent-hover))] sm:inline-flex"
           >

@@ -3,13 +3,13 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { ArrowUpRight, Check, Github, Linkedin, Loader2, Mail } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
-const EMAIL = "hello@boopathiraja.dev";
+const EMAIL = "manir1179@gmail.com";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const channels = [
   { label: "Email", value: EMAIL, href: `mailto:${EMAIL}?subject=Project%20enquiry`, Icon: Mail },
   { label: "GitHub", value: "github.com/JrKrishh", href: "https://github.com/JrKrishh", Icon: Github },
-  { label: "LinkedIn", value: "Boopathi Raja", href: "https://www.linkedin.com/in/boopathi-raja-dev", Icon: Linkedin },
+  { label: "LinkedIn", value: "Boopathi Raja", href: "https://www.linkedin.com/in/boopathiraja26/", Icon: Linkedin },
 ];
 
 /* The generated Database type predates contact_messages (see the migration in
