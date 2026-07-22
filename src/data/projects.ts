@@ -210,7 +210,6 @@ export const projects: Project[] = [
       "The platform-owner portal lacks pagination, bulk actions and export",
     ],
     liveUrl: "https://nexq.com.au",
-    repoUrl: "https://github.com/Rewoz-au/Nexq-Landingpage",
     featured: true,
   },
   {
@@ -252,7 +251,6 @@ export const projects: Project[] = [
       "Email and Teams notifications silently no-op when credentials are absent",
     ],
     liveUrl: "https://tcmplanner.vercel.app",
-    repoUrl: "https://github.com/Rewoz-au/Report-Requirement-tool",
     featured: true,
   },
   {
@@ -293,7 +291,6 @@ export const projects: Project[] = [
       "No JavaScript or TypeScript test coverage, only one SQL RLS test",
       "No production URL documented anywhere in the repo",
     ],
-    repoUrl: "https://github.com/JrKrishh/signaturecakes",
   },
 
   /* --------------------------------------------------------------- Product */
@@ -375,7 +372,6 @@ export const projects: Project[] = [
       "No automated tests anywhere",
       "Production deployment not confirmed live",
       "Play Store submission incomplete",
-      "Sensitive files left in the repo root — see the security note in the README",
     ],
   },
   {
@@ -498,7 +494,6 @@ export const projects: Project[] = [
       "Trend analysis is the LLM guessing, not scraped platform data",
       "The Dockerfile omits the directory containing the real entry point",
     ],
-    repoUrl: "https://github.com/JrKrishh/YourCMO",
   },
   {
     slug: "fuel-grease-portal",
@@ -612,7 +607,6 @@ export const projects: Project[] = [
       "There is no real NPU execution path; NPU work silently falls back to CPU",
       "Privacy classification is regex-based rather than a real on-device model",
       "No measured benchmark harness — throughput figures use hardcoded estimates",
-      "A live Telegram bot token is hardcoded in the bundled bot script",
     ],
     featured: true,
   },
@@ -692,7 +686,6 @@ export const projects: Project[] = [
       "The README claims an agent framework the code does not actually use",
       "The README names a different model than the one the loop actually drives",
       "Zero automated tests, and no accuracy benchmark despite reliability being the core claim",
-      "A live API key was committed in plaintext — rotate before publishing",
     ],
   },
   {
@@ -772,7 +765,6 @@ export const projects: Project[] = [
       "Sandbox isolation tests skip unless Docker is running",
       "Git history is three commits on a single day, suggesting a squashed repo",
     ],
-    repoUrl: "https://github.com/JrKrishh/guy-rick",
   },
   {
     slug: "strategy-battle-royale",
@@ -881,7 +873,6 @@ export const projects: Project[] = [
       "The AI service is hardcoded to demo mode, making the real API path unreachable",
       "Voice input is a non-functional stub",
       "No installable build was ever produced",
-      "A live API key is hardcoded in source — rotate before publishing",
     ],
   },
 ];
