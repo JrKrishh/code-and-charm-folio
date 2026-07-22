@@ -1,4 +1,4 @@
-import avatarImg from "@/assets/avatar.png";
+import avatarImg from "@/assets/avatar.jpg";
 import { Boxes, Bot, Store, Cpu } from "lucide-react";
 
 const capabilities = [
