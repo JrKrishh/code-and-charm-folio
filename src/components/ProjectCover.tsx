@@ -16,9 +16,12 @@ export const CATEGORY_PATTERN: Record<ProjectCategory, string> = {
 
 const ProjectCover = ({
   project,
+  index,
   className = "h-28",
 }: {
   project: Project;
+  /** 1-based position in the full registry — printed like a ledger entry №. */
+  index?: number;
   className?: string;
 }) => {
   return (
@@ -26,6 +29,11 @@ const ProjectCover = ({
       aria-hidden="true"
       className={`relative overflow-hidden rounded-t-[calc(var(--radius)+2px)] border-b border-line bg-surface-subtle ${CATEGORY_PATTERN[project.category]} ${className}`}
     >
+      {index != null && (
+        <span className="mono absolute left-4 top-3 text-[11px] text-ink-tertiary">
+          № {String(index).padStart(2, "0")}
+        </span>
+      )}
       {/* Accent bloom, brightened slightly by the parent card's hover. */}
       <div className="absolute -right-10 -top-14 size-44 rounded-full bg-[radial-gradient(closest-side,hsl(var(--accent)/0.12),transparent)] opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
 

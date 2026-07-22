@@ -11,10 +11,10 @@ import type { Project } from "@/data/projects";
  * above it (z-10) so it stays independently reachable by keyboard rather than
  * nesting interactive elements.
  */
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({ project, index }: { project: Project; index?: number }) => {
   return (
     <article className="surface-card card-lift group relative flex flex-col overflow-hidden">
-      <ProjectCover project={project} />
+      <ProjectCover project={project} index={index} />
 
       <div className="flex flex-1 flex-col p-6 pt-5">
         <div className="mb-4 flex items-start justify-between gap-3">

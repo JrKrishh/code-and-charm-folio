@@ -82,7 +82,12 @@ const Index = () => {
             <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {grid.map((project, i) => (
                 <Reveal key={project.slug} delay={(i % 3) * 70}>
-                  <ProjectCard project={project} />
+                  {/* Registry № matches /work — the data file is already in
+                      registry order, so array position is the number. */}
+                  <ProjectCard
+                    project={project}
+                    index={projects.findIndex((p) => p.slug === project.slug) + 1}
+                  />
                 </Reveal>
               ))}
             </div>
