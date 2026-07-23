@@ -1,6 +1,6 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import { projects } from "../../data/projects";
+import { projects } from "../../../data/projects";
 
 export default defineTool({
   name: "get_project",
