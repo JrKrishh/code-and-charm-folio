@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "sdk_version": "0.24.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "boopathiraja-portfolio-mcp",
+      "version": "0.1.0",
+      "title": "Boopathi Raja — Portfolio MCP"
+    },
+    "tools": [
+      {
+        "name": "list_projects",
+        "title": "List portfolio projects",
+        "description": "Return a list of Boopathi Raja's portfolio projects with slug, name, tagline, category, status, year, and live URL. Optionally filter by category, status, or featured flag.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "category": {
+              "description": "Filter by category",
+              "type": "string",
+              "enum": [
+                "Client Work",
+                "Product",
+                "AI Infrastructure",
+                "Apps & Games"
+              ]
+            },
+            "status": {
+              "description": "Filter by project status",
+              "type": "string",
+              "enum": [
+                "Production",
+                "MVP",
+                "Prototype"
+              ]
+            },
+            "featuredOnly": {
+              "description": "Only return featured projects",
+              "type": "boolean"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_project",
+        "title": "Get project details",
+        "description": "Return full details for a single portfolio project by slug, including problem, features, stack, architecture, highlight, metrics, evidence, gaps, and live URL.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Project slug (e.g. 'steel-flow', 'nexq')"
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_profile",
+        "title": "Get Boopathi Raja's profile",
+        "description": "Return Boopathi Raja's public profile: name, role, bio, focus areas, and links to portfolio site and live projects.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
