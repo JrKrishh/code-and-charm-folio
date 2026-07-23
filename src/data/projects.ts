@@ -301,7 +301,7 @@ export const projects: Project[] = [
     category: "Product",
     status: "MVP",
     statusReason:
-      "Deployed and functioning end to end on Cloud Run with real encrypted evidence storage and chain of custody.",
+      "Ran end to end on Cloud Run with real encrypted evidence storage and chain of custody; the demo deployment is currently offline.",
     year: "2026",
     problem:
       "Indian police departments lack an affordable bodycam ecosystem and a reliable chain of custody for evidence. Rakshak streams encrypted, GPS-tagged video from an officer's Android phone to the cloud, where AI flags threats and commanders can search footage in plain language.",
@@ -323,7 +323,7 @@ export const projects: Project[] = [
       "The same YOLO-exported ONNX model runs server-side in Python and client-side in the browser via WASM — one artifact giving instant in-browser detection plus server-verified confirmation.",
     metrics: { loc: 20200, files: 110, tests: 2 },
     evidence: [
-      "Deployed and reachable on Google Cloud Run",
+      "Was deployed and verified working on Google Cloud Run",
       "Real encrypted evidence blobs and chunked uploads on disk",
       "Curated demo dataset: 10 officers, 7 incidents, 15 evidence items",
     ],
@@ -332,7 +332,9 @@ export const projects: Project[] = [
       "Cloud Vision, Speech-to-Text and LLM features are flagged off by default, degrading AI search to keyword heuristics",
       "No automated test suite or CI — only manual smoke scripts",
     ],
-    liveUrl: "https://rakshak-web-ws2upizbva-uc.a.run.app",
+    // Cloud Run deployment verified 2026-07-22 as returning 500/503 — link
+    // removed rather than pointing visitors at a dead app. Restore once the
+    // service is redeployed.
     featured: true,
   },
   {
