@@ -565,6 +565,53 @@ var projects = [
     featured: true
   },
   {
+    slug: "minibr",
+    name: "MiniBR",
+    tagline: "A self-play arena where squad agents train by fighting frozen copies of their past selves.",
+    category: "AI Infrastructure",
+    status: "MVP",
+    statusReason: "Ten versions trained end to end through a real self-play loop, with a champion that survives its own promotion gates \u2014 but it's a personal research environment, and the newest version is coded and compiling without ever having been trained.",
+    year: "2026",
+    problem: "Tactical shooter AI is normally scripted, or trained against fixed bots that cap how good it can get. MiniBR is a Unity environment built to train squad agents purely by self-play: they fight frozen snapshots of their own earlier selves, and every new behaviour has to beat the standing champion on measured combat telemetry before it's kept.",
+    features: [
+      "ML-Agents self-play on the MA-POCA multi-agent trainer, with a ten-model opponent window and Elo tracking",
+      "One agent class that emits 34 to 109 observation floats depending on what each loaded model declares",
+      "Squad mechanics: teams, downed and revive states, weapon tiers, gear, meds and thrown smoke",
+      "Speed-gated accuracy and tagging, modelled on Valorant's movement-accuracy rules",
+      "An evaluation harness that gates every version on shot, hit and kill telemetry before promotion",
+      "An LLM-distilled intent network \u2014 DeepSeek labels situations, a small MLP student runs in-engine",
+      "Headless Linux builds packaged for training on rented cloud GPUs"
+    ],
+    stack: [
+      "Unity 2022.3",
+      "C#",
+      "ML-Agents",
+      "MA-POCA",
+      "PyTorch",
+      "ONNX",
+      "Python",
+      "scikit-learn",
+      "Vast.ai"
+    ],
+    architecture: "A Unity environment exports headless Linux builds that run on rented GPUs, where ML-Agents trains squads by self-play against a rolling window of frozen past checkpoints. Trained policies export to ONNX and load back into the engine, where a separate C# inference layer runs a small intent network distilled from LLM-labelled situations. A scripted evaluation pass replays fixed scenarios and decides whether a new version is promoted over the standing champion.",
+    highlight: "Because the agent sizes its own observation vector from whatever a loaded model declares it needs, an early 34-input champion and a later 109-input challenger can be dropped into the same tournament and fight fairly \u2014 the league keeps its whole history playable instead of being invalidated every time the state representation grows.",
+    metrics: { loc: 9347, files: 73 },
+    evidence: [
+      "13 archived checkpoints spanning v12 to v21 (~34MB each), with ONNX exports and TensorBoard event files from real training runs",
+      "A genuine ML-Agents self_play block \u2014 50k-step snapshots, ten-model window, 1200 starting Elo \u2014 on the MA-POCA trainer",
+      "Evaluation logs that caught v21 collapsing to roughly zero shots per round, against v18's 24.8 shots and 48.4% hit rate \u2014 the regression was rejected rather than shipped",
+      "440 cached DeepSeek-labelled situations feeding a distilled intent network that runs in-engine through an 84-line C# inference layer",
+      "A rendered 4v4 match screenshot and headless Linux builds packaged for cloud GPU training"
+    ],
+    gaps: [
+      "v22 is fully written, configured and compiling, but has never been trained \u2014 no checkpoint for it exists yet",
+      "The champion of record is v18, not the newest version: v21 regressed and was rejected by its own gate",
+      "A DIAMBRA/Tekken self-play side-track is written but never ran \u2014 no ROM, no output model, no logs",
+      "No git history anywhere; provenance rests on dated configs, checkpoints and logs rather than commits"
+    ],
+    liveUrl: null
+  },
+  {
     slug: "agentserve",
     name: "AgentServe",
     tagline: "Keeps LLM prompt caches hot across a GPU fleet so agents stop recomputing prefixes.",
