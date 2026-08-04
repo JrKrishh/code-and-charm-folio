@@ -9,6 +9,7 @@ import CaseStudy from "./pages/CaseStudy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Login from "./pages/Login.tsx";
 import OAuthConsent from "./pages/OAuthConsent.tsx";
+import Admin from "./pages/Admin.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/work/:slug" element={<CaseStudy />} />
           <Route path="/login" element={<Login />} />
           <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
