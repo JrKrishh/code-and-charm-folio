@@ -9,6 +9,7 @@ import CaseStudy from "./pages/CaseStudy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Login from "./pages/Login.tsx";
 import OAuthConsent from "./pages/OAuthConsent.tsx";
+import Admin from "./pages/Admin.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
