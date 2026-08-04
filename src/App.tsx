@@ -7,6 +7,8 @@ import Index from "./pages/Index.tsx";
 import Work from "./pages/Work.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Login from "./pages/Login.tsx";
+import OAuthConsent from "./pages/OAuthConsent.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
