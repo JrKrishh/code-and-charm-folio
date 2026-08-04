@@ -3,7 +3,7 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { defineMcp } from "npm:@lovable.dev/mcp-js@0.24.0";
+import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.24.0";
 
 // src/lib/mcp/tools/list-projects.ts
 import { defineTool } from "npm:@lovable.dev/mcp-js@0.24.0";
@@ -986,11 +986,16 @@ var get_profile_default = defineTool3({
 });
 
 // src/lib/mcp/index.ts
+var projectRef = "snwsaxstiribjnlbqete";
 var mcp_default = defineMcp({
   name: "boopathiraja-portfolio-mcp",
   title: "Boopathi Raja \u2014 Portfolio MCP",
   version: "0.1.0",
-  instructions: "Public tools for Boopathi Raja's portfolio. Use `get_profile` for bio and links, `list_projects` to browse projects (optionally filtered by category, status, or featured), and `get_project` for full case-study details on a specific project by slug.",
+  instructions: "Tools for Boopathi Raja's portfolio. Use `get_profile` for bio and links, `list_projects` to browse projects (optionally filtered by category, status, or featured), and `get_project` for full case-study details on a specific project by slug.",
+  auth: auth.oauth.issuer({
+    issuer: `https://${projectRef}.supabase.co/auth/v1`,
+    acceptedAudiences: "authenticated"
+  }),
   tools: [list_projects_default, get_project_default, get_profile_default]
 });
 
