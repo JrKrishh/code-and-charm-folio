@@ -3,7 +3,7 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { defineMcp } from "npm:@lovable.dev/mcp-js@0.24.0";
+import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.24.0";
 
 // src/lib/mcp/tools/list-projects.ts
 import { defineTool } from "npm:@lovable.dev/mcp-js@0.24.0";
@@ -492,6 +492,79 @@ var projects = [
   },
   /* ------------------------------------------------------ AI Infrastructure */
   {
+    slug: "xclaw",
+    name: "XClaw",
+    tagline: "A wake-word Android AI that sees the screen to operate apps, screen calls, and auto-reply in your voice.",
+    category: "AI Infrastructure",
+    status: "MVP",
+    statusReason: "The core loop runs end to end on a real device across 180 real commits, with declared Android services backing every claimed capability \u2014 but several sub-features are explicitly documented as stubs, and it's personal-use tooling, not shipped to other users.",
+    year: "2026",
+    problem: "Most phone assistants stop at the chat window and have to be opened first. XClaw AI is a persistent, privileged Android service with a wake word: it can see the screen and tap through other apps on your behalf, auto-reply to WhatsApp, Telegram and SMS in your own learned writing style, screen and summarise calls, and proactively brief you each morning \u2014 closer to a second pair of hands on the phone than a chatbot.",
+    features: [
+      'Always-on "Hey XClaw" wake word with full-duplex, multilingual voice conversation (Tamil, Hindi, Tanglish)',
+      "Vision-driven UI automation \u2014 screenshot plus accessibility tree fed to Gemini 2.0 Flash \u2014 plans and executes multi-step taps across any app",
+      "WhatsApp, Telegram and SMS auto-reply via a real NotificationListenerService, in a learned writing style, with schedule extraction from messages",
+      "AI screens and conducts phone calls on the user's behalf, with recording, transcription, and a 4-agent pipeline extracting meetings into the calendar",
+      'A 4-model, 9-agent "brain" \u2014 Thinker, Doer, Guardian and Talker roles coordinating nine sub-agents over a shared blackboard',
+      'Self-learning: successful action sequences are saved as replayable "recipes," giving a zero-LLM fast path for requests it has already solved',
+      "Runs as a persistent, privileged system service that survives a reboot and restarts itself"
+    ],
+    stack: ["Kotlin", "Jetpack Compose", "Coroutines", "WorkManager", "Gemini 2.0 Flash", "DigitalOcean Gradient AI", "Termux", "Magisk"],
+    architecture: "A persistent foreground service and boot receiver keep a native Kotlin/Compose app alive around the clock. Requests run through a 4-model, 9-agent pipeline coordinated over a shared blackboard, with a rule-based fast path handling previously-solved requests before any model call happens. Vision automation drives other apps by feeding a screenshot and the accessibility tree to Gemini; messaging auto-reply runs through Android's NotificationListenerService. Multi-provider LLM routing races Gemini, DigitalOcean Gradient AI, Groq, OpenRouter, Anthropic and a local llama.cpp fallback. A paired xclaw-laptop-server extends control to a laptop over WebSocket, and a Termux/Magisk bridge escalates to root for system-level actions.",
+    highlight: "Caught live on a real device: the agent found its own GPU inference server offline, logged the failure, and dispatched Aider through a Termux bridge to implement a fix \u2014 a genuine self-healing loop running underneath the full 9-agent pipeline, not a scripted demo of one.",
+    metrics: { loc: 42060, files: 118 },
+    evidence: [
+      "103 Kotlin files, ~32.5k lines, confirmed directly \u2014 the app's own architecture doc claims closer to 215 files across ~30 feature packages",
+      '180 real commits against this module alone, in named phases ("Phase 5: delete dead StatusPill," "Phase 7: rewrite onboarding") \u2014 genuine iteration, not a squashed dump',
+      "A dated screenshot from a real device capturing the agent crew mid-session, including a genuine GPU failure and the system's own repair attempt",
+      "Declared Android services matching every claimed capability: WhatsAppNotificationService, XClawAccessibilityService, XClawWakeWordService, CallScreeningService, CallRecorderService, XClawBriefingService"
+    ],
+    gaps: [
+      "The messaging gateway underneath (WhatsApp Web connectivity, multi-channel plugin system) is openclaw, an existing open-source project \u2014 the assistant layered on top of it is original, the gateway isn't",
+      "Native on-device vision is a stub by the project's own documentation; real local vision runs through a separate Termux server, not in-process",
+      "The offline/local LLM fallback is rule-based pattern matching, not real inference, again by its own documentation",
+      "Telegram auto-reply lacks WhatsApp's vision and schedule-extraction features, and SMS has no full reply engine yet"
+    ],
+    liveUrl: null,
+    featured: true
+  },
+  {
+    slug: "marcuscode",
+    name: "MarcusCode",
+    tagline: "A mobile IDE with a built-in AI coding agent \u2014 Claude Code, running on a phone.",
+    category: "AI Infrastructure",
+    status: "MVP",
+    statusReason: "Core agent loop, editor and terminal all work end to end; shipped as a capped 100-seat Android beta with Play Store submission tooling in place.",
+    year: "2026",
+    problem: "Existing AI coding agents assume a laptop and a terminal. MarcusCode puts the same tool-calling agent loop \u2014 read, write, edit, search, run \u2014 directly on a phone, so a project can be worked on from anywhere without a PC in reach.",
+    features: [
+      "Hand-rolled Anthropic streaming tool-use loop parsing raw SSE events end to end",
+      "On-device execution of bash, file read/write/edit, and search tools",
+      "Termux detection that unlocks real npm, git and python on-device",
+      "Multi-provider support: Claude, GPT, Gemini, DeepSeek and Llama",
+      "Embedded Linux terminal, Git integration, and live web preview",
+      "SSH terminal for driving remote servers from the phone",
+      "Encrypted on-device BYOK API key storage"
+    ],
+    stack: ["Kotlin", "Android", "Swift", "iOS", "Python", "Supabase", "PostgreSQL"],
+    architecture: "A Kotlin Android client and a parallel Swift iOS client both speak directly to the Anthropic Messages API, parsing content_block_start/delta/stop and input_json_delta events to drive a multi-turn tool-use loop with no server in between. An optional PC-tethered Python agent server covers heavier workloads; Supabase handles auth, waitlist and encrypted key storage.",
+    highlight: "The agent loop is implemented from the raw SSE protocol up \u2014 no SDK \u2014 parsing tool_use blocks and looping tool results back to the model directly on an Android device, with Termux detection turning it into a genuine no-PC Claude Code equivalent rather than a thin chat wrapper.",
+    metrics: { loc: 28200, files: 111 },
+    evidence: [
+      "91 Kotlin files (~25.8k lines) in the Android client, 20 Swift files (~2.4k lines) in the iOS client",
+      "A public releases repository with a Play Store privacy policy already committed",
+      "Six real screenshots spanning chat, editor, skills, settings, shell and file browser",
+      "Supabase migrations for profiles, waitlist and encrypted API key storage"
+    ],
+    gaps: [
+      "iOS trails Android by a wide margin \u2014 roughly a tenth of the code, so parity isn't there yet",
+      "Distribution is a capped 100-seat beta via direct APK download, not a public Play Store listing",
+      "The app repository's history is two squashed commits, so pre-release iteration isn't visible"
+    ],
+    liveUrl: "https://github.com/JrKrishh/MarcusCodeAndroid-releases",
+    featured: true
+  },
+  {
     slug: "agentserve",
     name: "AgentServe",
     tagline: "Keeps LLM prompt caches hot across a GPU fleet so agents stop recomputing prefixes.",
@@ -913,11 +986,16 @@ var get_profile_default = defineTool3({
 });
 
 // src/lib/mcp/index.ts
+var projectRef = "snwsaxstiribjnlbqete";
 var mcp_default = defineMcp({
   name: "boopathiraja-portfolio-mcp",
   title: "Boopathi Raja \u2014 Portfolio MCP",
   version: "0.1.0",
-  instructions: "Public tools for Boopathi Raja's portfolio. Use `get_profile` for bio and links, `list_projects` to browse projects (optionally filtered by category, status, or featured), and `get_project` for full case-study details on a specific project by slug.",
+  instructions: "Tools for Boopathi Raja's portfolio. Use `get_profile` for bio and links, `list_projects` to browse projects (optionally filtered by category, status, or featured), and `get_project` for full case-study details on a specific project by slug.",
+  auth: auth.oauth.issuer({
+    issuer: `https://${projectRef}.supabase.co/auth/v1`,
+    acceptedAudiences: "authenticated"
+  }),
   tools: [list_projects_default, get_project_default, get_profile_default]
 });
 
