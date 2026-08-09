@@ -575,6 +575,7 @@ var projects = [
     problem: "Tactical shooter AI is normally scripted, or trained against fixed bots that cap how good it can get. MiniBR is a Unity environment built to train squad agents purely by self-play: they fight frozen snapshots of their own earlier selves, and every new behaviour has to beat the standing champion on measured combat telemetry before it's kept.",
     features: [
       "ML-Agents self-play on the MA-POCA multi-agent trainer, with a ten-model opponent window and Elo tracking",
+      "A custom PFSP league on top: frozen champion snapshots held in a pool, resampled every episode, with per-snapshot win/loss tracking",
       "One agent class that emits 34 to 109 observation floats depending on what each loaded model declares",
       "Squad mechanics: teams, downed and revive states, weapon tiers, gear, meds and thrown smoke",
       "Speed-gated accuracy and tagging, modelled on Valorant's movement-accuracy rules",
@@ -593,11 +594,12 @@ var projects = [
       "scikit-learn",
       "Vast.ai"
     ],
-    architecture: "A Unity environment exports headless Linux builds that run on rented GPUs, where ML-Agents trains squads by self-play against a rolling window of frozen past checkpoints. Trained policies export to ONNX and load back into the engine, where a separate C# inference layer runs a small intent network distilled from LLM-labelled situations. A scripted evaluation pass replays fixed scenarios and decides whether a new version is promoted over the standing champion.",
-    highlight: "Because the agent sizes its own observation vector from whatever a loaded model declares it needs, an early 34-input champion and a later 109-input challenger can be dropped into the same tournament and fight fairly \u2014 the league keeps its whole history playable instead of being invalidated every time the state representation grows.",
+    architecture: "A Unity environment exports headless Linux builds that run on rented GPUs, where ML-Agents trains squads by self-play against a rolling window of frozen past checkpoints. A league layer sits above that: some agent slots are pinned as frozen opponents drawn from a snapshot pool and resampled each episode, while the rest stay trainer-driven learners. Trained policies export to ONNX and load back into the engine, where a separate C# inference layer runs a small intent network distilled from LLM-labelled situations. A scripted evaluation pass replays fixed scenarios and decides whether a new version is promoted over the standing champion.",
+    highlight: "Naive self-play collapses into mirror matches \u2014 both sides co-adapt to each other and stop getting better. The league fixes that by keeping a pool of frozen past champions and sampling them proportional to (1 \u2212 learner win rate)\xB2, AlphaStar's prioritised fictitious self-play trick, so the learner spends most of its training against whatever is currently beating it rather than against a copy of itself.",
     metrics: { loc: 9347, files: 73 },
     evidence: [
       "13 archived checkpoints spanning v12 to v21 (~34MB each), with ONNX exports and TensorBoard event files from real training runs",
+      "A PFSP league that samples frozen opponents by (1 \u2212 learner win rate)\xB2, loads its pool from Resources so it runs in headless Linux training builds, and tracks games and wins per snapshot",
       "A genuine ML-Agents self_play block \u2014 50k-step snapshots, ten-model window, 1200 starting Elo \u2014 on the MA-POCA trainer",
       "Evaluation logs that caught v21 collapsing to roughly zero shots per round, against v18's 24.8 shots and 48.4% hit rate \u2014 the regression was rejected rather than shipped",
       "440 cached DeepSeek-labelled situations feeding a distilled intent network that runs in-engine through an 84-line C# inference layer",
