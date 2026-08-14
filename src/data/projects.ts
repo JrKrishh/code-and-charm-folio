@@ -737,6 +737,7 @@ export const projects: Project[] = [
       "Privacy classification is regex-based rather than a real on-device model",
       "No measured benchmark harness — throughput figures use hardcoded estimates",
     ],
+    repoUrl: "https://github.com/JrKrishh/EdgeMind",
     featured: true,
   },
   {
@@ -852,6 +853,43 @@ export const projects: Project[] = [
       "16 of 30 analyzer tests fail on path-normalisation bugs",
       "README performance claims have no benchmark harness behind them",
     ],
+  },
+  {
+    slug: "autoqa-secops",
+    name: "AutoQA-SecOps",
+    tagline: "An autonomous multi-agent scanner that probes web APIs for injection and auth flaws.",
+    category: "AI Infrastructure",
+    status: "MVP",
+    statusReason:
+      "The security and API agents are implemented directly — no external scanner wrapped — and covered by a test suite larger than the source it exercises.",
+    year: "2026",
+    problem:
+      "Security testing a web API by hand is slow and easy to do incompletely. AutoQA-SecOps discovers a target's surface from its OpenAPI spec, then dispatches a battery of specialised agents that fire real probes and fold the raw results into a structured findings report.",
+    features: [
+      "SQL-injection agent with classic, union-based, blind and time-based payload classes",
+      "Dedicated agents for XSS, CSRF, auth, cookie flags, security headers and dependency risk",
+      "OpenAPI parser, endpoint catalogue and request interceptor driving test generation",
+      "Playwright crawler and journey generator for real user-flow coverage",
+      "Findings analyser and report generator that tag every result with its payload class",
+      "Agent orchestrator with a job queue and a run-memory layer",
+    ],
+    stack: ["Python", "FastAPI", "Playwright", "Pydantic", "httpx", "Redis", "pytest", "Hypothesis"],
+    architecture:
+      "Security, API and UI agents each take an injectable async HTTP client behind a typed Protocol, so every agent is unit-testable against a fake client with no network. An orchestrator coordinates runs through a job queue; a result analyser de-duplicates raw agent output into structured findings.",
+    highlight:
+      "Every probe is implemented directly rather than shelling out to an existing scanner, and the injectable-client design means the whole security suite runs offline in CI — there is more test code (8.5k lines) than source (5.5k).",
+    metrics: { loc: 5555, files: 44, tests: 30 },
+    evidence: [
+      "44 source modules with a mirrored 30-file test suite exercising every agent",
+      "SQLi payloads split and tagged across four injection classes",
+      "Property-based tests via Hypothesis, run against a fake HTTP client with no network",
+    ],
+    gaps: [
+      "Personal project — not a maintained product, and no substitute for a professional assessment",
+      "Fires real injection payloads, so it is for authorised targets only",
+      "Reporting and orchestration are functional but have had no external users",
+    ],
+    repoUrl: "https://github.com/JrKrishh/autoqa-secops",
   },
 
   /* ---------------------------------------------------------- Apps & Games */

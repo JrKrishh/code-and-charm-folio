@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import StatusBadge from "@/components/StatusBadge";
@@ -198,6 +198,17 @@ const CaseStudy = () => {
                     className="mono flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-accent text-sm font-medium text-[hsl(var(--on-accent))] transition-colors hover:bg-[hsl(var(--accent-hover))]"
                   >
                     Open live site <ArrowUpRight className="size-4" />
+                  </a>
+                )}
+
+                {project.repoUrl && (
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="mono flex h-12 w-full items-center justify-center gap-2 rounded-lg border border-line text-sm font-medium text-ink-secondary transition-colors hover:border-border-strong hover:text-ink"
+                  >
+                    <Github className="size-4" /> View source
                   </a>
                 )}
               </aside>
