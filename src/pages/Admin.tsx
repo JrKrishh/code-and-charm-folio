@@ -64,10 +64,7 @@ const Admin = () => {
         setLoading(false);
         return;
       }
-      const { data: isAdmin } = await db.rpc("has_role", {
-        _user_id: user.id,
-        _role: "admin",
-      });
+      const { data: isAdmin } = await db.rpc("is_current_user_admin");
       if (cancelled) return;
       if (!isAdmin) {
         setAccess("denied");
