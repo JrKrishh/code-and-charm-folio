@@ -5,6 +5,7 @@ import SiteFooter from "@/components/SiteFooter";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import AboutSection from "@/components/AboutSection";
+import ArtTeaser from "@/components/ArtTeaser";
 import ContactSection from "@/components/ContactSection";
 import ProjectCard from "@/components/ProjectCard";
 import SpotlightCard from "@/components/SpotlightCard";
@@ -94,6 +95,7 @@ const Index = () => {
           </div>
         </section>
 
+        <ArtTeaser />
         <AboutSection />
         <ContactSection />
       </main>

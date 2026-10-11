@@ -9,6 +9,7 @@ const socials = [
 
 const nav = [
   { label: "Work", to: "/work" },
+  { label: "Art", to: "/art" },
   { label: "About", to: "/#about" },
   { label: "Contact", to: "/#contact" },
 ];
